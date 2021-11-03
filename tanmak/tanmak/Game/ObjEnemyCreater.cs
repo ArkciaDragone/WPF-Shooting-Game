@@ -6,7 +6,7 @@ namespace tanmak.Game
     {
         public ObjEnemyCreater(World world, ObjPlayer player) : base(world)
         {
-            world.AddObject(new ObjEnemyOne(world, player));
+            world.AddObject(new ObjEnemyZero(world, player));
         }
     }
 }
