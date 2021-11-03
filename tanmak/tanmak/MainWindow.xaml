@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:tanmak"
         mc:Ignorable="d"
-        Title="WPF로 탄막 게임을 만들어보았다" Height="600" Width="385">
+        Title="WPF Dragon Battle!" Height="600" Width="385">
     <Grid x:Name="grid">
         
     </Grid>

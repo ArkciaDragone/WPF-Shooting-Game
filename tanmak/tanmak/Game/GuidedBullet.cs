@@ -21,7 +21,7 @@ namespace tanmak.Game
 
             Damage = ScoreManager.GuidedBulletDamage;
 
-            X = parent.X + parent.Width /2;
+            X = parent.X + parent.Width / 2;
             Y = parent.Y + parent.Height / 2;
 
             Width = 6;
@@ -36,7 +36,7 @@ namespace tanmak.Game
             t.Interval = TimeSpan.FromSeconds(2.5);
             t.Tick += delegate
             {
-                IsDied = true;
+                Dead = true;
                 t.Stop();
             };
 

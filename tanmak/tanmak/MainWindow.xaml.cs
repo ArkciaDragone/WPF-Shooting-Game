@@ -5,7 +5,7 @@ using tanmak.Game;
 namespace tanmak
 {
     /// <summary>
-    /// MainWindow.xaml에 대한 상호 작용 논리
+    /// MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -27,19 +27,19 @@ namespace tanmak
                 {
                     on = false;
                 }
-                else if(low == "suiside")
+                else if (low == "suiside")
                 {
                     Convert.ToInt32("aaaaaaaaaaaaaa");
                 }
-                else if(low == "quit")
+                else if (low == "quit")
                 {
                     Environment.Exit(0);
                 }
-                else if(low == "hello")
+                else if (low == "hello")
                 {
                     Console.WriteLine("Hello, world");
                 }
-                else if(low == "fortest")
+                else if (low == "fortest")
                 {
                     ForTest();
                 }

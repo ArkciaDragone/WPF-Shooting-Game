@@ -29,7 +29,7 @@ namespace tanmak.Engine
 
         public World World { get; set; }
 
-        public bool IsDied { get; set; } = false;
+        public bool Dead { get; set; } = false;
 
         public GameObject(World world)
         {
@@ -43,14 +43,14 @@ namespace tanmak.Engine
 
         public virtual void OnRender(DrawingContext dc)
         {
-            if(Sprite != null)
+            if (Sprite != null)
                 Sprite.Render(this, dc);
         }
 
         private Storyboard MoveToStoryboard;
         public Storyboard MoveTo(double x, double y, double durationMs)
         {
-            if(MoveToStoryboard != null)
+            if (MoveToStoryboard != null)
             {
                 MoveToStoryboard.Stop();
                 MoveToStoryboard.Remove();
@@ -79,26 +79,19 @@ namespace tanmak.Engine
             return sb;
         }
 
-        public static bool IsHitted(GameObject me, GameObject other)
+        public static bool IsHit(GameObject me, GameObject other)
         {
-            if(other.X >= me.X - other.Width && other.X <= me.X + me.Width && other.Y >= me.Y - other.Height && other.Y <= me.Y + me.Height)
-            {
-                return true;
-            }
-
-            return false;
+            return other.X >= me.X - other.Width && other.X <= me.X + me.Width &&
+                other.Y >= me.Y - other.Height && other.Y <= me.Y + me.Height;
         }
 
-        public bool IsHitted(GameObject other)
-        {
-            return IsHitted(this, other);
-        }
+        public bool IsHit(GameObject other) => IsHit(this, other);
 
         public void CheckOutOfBounds()
         {
             if (X < -Width || X > World.Width + Width || Y < -Height || Y > World.Height + Height)
             {
-                IsDied = true;
+                Dead = true;
             }
         }
     }

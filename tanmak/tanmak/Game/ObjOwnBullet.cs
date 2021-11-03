@@ -20,9 +20,9 @@ namespace tanmak.Game
         {
             Y -= 15;
 
-            if(Y < -100)
+            if (Y < -100)
             {
-                IsDied = true;
+                Dead = true;
             }
         }
     }

@@ -13,14 +13,8 @@ namespace tanmak.Engine
         private World _world;
         public virtual World World
         {
-            get
-            {
-                return _world;
-            }
-            set
-            {
-                _world = value;
-            }
+            get { return _world; }
+            set { _world = value; }
         }
 
         public double ViewOffsetX { get; set; }
@@ -34,7 +28,10 @@ namespace tanmak.Engine
 
         protected override Visual GetVisualChild(int index) => canvas[index];
 
-        protected override int VisualChildrenCount => canvas.Count;
+        protected override int VisualChildrenCount
+        {
+            get { return canvas.Count; }
+        }
 
         public GamePlane()
         {
@@ -73,7 +70,7 @@ namespace tanmak.Engine
                 {
                     _world.OnRender(dc);
                 }
-                
+
                 TransformGroup group = new TransformGroup();
                 group.Children.Add(new TranslateTransform(ViewOffsetX, ViewOffsetY));
                 group.Children.Add(new ScaleTransform() { CenterX = ViewScaleOriginX, CenterY = ViewScaleOriginY, ScaleX = ViewScaleX, ScaleY = ViewScaleY });

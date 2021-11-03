@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
@@ -26,7 +27,8 @@ namespace tanmak.Game
             Height = 14;
 
             //Sprite = new RenctangleSprite(new SolidColorBrush(Color.FromRgb(255, 50, 50)), Width, Height);
-            Sprite = new ImageSprite("pack://application:,,,/kid.png", 40);
+            string[] spriteSheet = new string[] { "player/0.png", "player/1.png", "player/2.png", "player/3.png" };
+            Sprite = new ImageSprite(spriteSheet, 40, new Point(1.5,-10));
 
             ScoreManager = new ScoreManager();
 
@@ -48,7 +50,7 @@ namespace tanmak.Game
             {
                 tcount++;
 
-                if(tcount > 60)
+                if (tcount > 60)
                 {
                     t.Stop();
 
@@ -117,13 +119,13 @@ namespace tanmak.Game
 
                 foreach (GameObject obj in World.Objects)
                 {
-                    if (!obj.IsDied && obj is EnemyBullet)
+                    if (!obj.Dead && obj is EnemyBullet)
                     {
-                        if (IsHitted(this, obj))
+                        if (IsHit(this, obj))
                         {
                             ScoreManager.HeroHitted(((EnemyBullet)obj).Damage);
 
-                            if(camaraShake == null)
+                            if (camaraShake == null)
                             {
                                 camaraShake = new DispatcherTimer();
                                 camaraShake.Interval = TimeSpan.FromMilliseconds(25);
@@ -137,8 +139,8 @@ namespace tanmak.Game
                                         World.Plane.ViewOffsetY = 0;
                                         return;
                                     }
-                                    World.Plane.ViewOffsetX = rand.NextDouble(-5,5);
-                                    World.Plane.ViewOffsetY = rand.NextDouble(-5,5);
+                                    World.Plane.ViewOffsetX = rand.NextDouble(-5, 5);
+                                    World.Plane.ViewOffsetY = rand.NextDouble(-5, 5);
                                 };
                             }
 
@@ -149,7 +151,7 @@ namespace tanmak.Game
                 }
             }
         }
-        
+
         public override void OnRender(DrawingContext dc)
         {
             if (!ScoreManager.IsDied)

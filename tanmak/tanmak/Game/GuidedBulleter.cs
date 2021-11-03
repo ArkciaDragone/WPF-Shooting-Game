@@ -17,7 +17,7 @@ namespace tanmak.Game
         int count = 0;
         public override double Shoot()
         {
-            if(creater == null)
+            if (creater == null)
             {
                 creater = new DispatcherTimer();
                 creater.Interval = TimeSpan.FromMilliseconds(40);

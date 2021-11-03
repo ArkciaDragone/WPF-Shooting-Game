@@ -38,7 +38,7 @@ namespace tanmak.Game
             opacity -= 0.3;
             if (opacity < 0)
             {
-                IsDied = true;
+                Dead = true;
                 return;
             }
 

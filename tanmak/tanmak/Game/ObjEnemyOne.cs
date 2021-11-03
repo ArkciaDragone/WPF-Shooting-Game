@@ -43,11 +43,11 @@ namespace tanmak.Game
 
         public override void OnUpdate()
         {
-            foreach(GameObject obj in World.Objects)
+            foreach (GameObject obj in World.Objects)
             {
-                if (!obj.IsDied && obj is ObjOwnBullet)
+                if (!obj.Dead && obj is ObjOwnBullet)
                 {
-                    if (IsHitted(this, obj))
+                    if (IsHit(this, obj))
                     {
                         player.ScoreManager.EnemyHiited(ScoreManager.NormalMissileDamage);
                     }

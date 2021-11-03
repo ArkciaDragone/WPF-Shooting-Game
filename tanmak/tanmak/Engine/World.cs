@@ -29,7 +29,7 @@ namespace tanmak.Engine
         {
             foreach (GameObject obj in Objects)
             {
-                if (!obj.IsDied)
+                if (!obj.Dead)
                 {
                     obj.OnRender(dc);
                 }
@@ -39,14 +39,12 @@ namespace tanmak.Engine
         public virtual void OnUpdate()
         {
             Width = Plane.ActualWidth;
-
             Height = Plane.ActualHeight;
-
             ProcessPaddingObjects();
 
-            foreach(GameObject obj in Objects)
+            foreach (GameObject obj in Objects)
             {
-                if (!obj.IsDied)
+                if (!obj.Dead)
                 {
                     obj.OnUpdate();
                 }
@@ -77,7 +75,7 @@ namespace tanmak.Engine
         {
             PaddingObjects.Add(obj);
         }
-        
+
         public void DrawText(DrawingContext dc, string text = "", double x = 0, double y = 0, double size = 12, HorizontalAlignment ha = HorizontalAlignment.Left, VerticalAlignment va = VerticalAlignment.Top)
         {
             FormattedText ft = new FormattedText(text, System.Globalization.CultureInfo.CurrentCulture, System.Windows.FlowDirection.LeftToRight, Defaults.Typeface, size, Brushes.Black);
@@ -111,10 +109,10 @@ namespace tanmak.Engine
                 if (index >= Objects.Count)
                     break;
                 else
-                    if (Objects[index].IsDied)
-                        Objects.RemoveAt(index);
-                    else
-                        index++;
+                    if (Objects[index].Dead)
+                    Objects.RemoveAt(index);
+                else
+                    index++;
         }
     }
 }

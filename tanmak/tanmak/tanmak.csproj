@@ -127,7 +127,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="kid.png" />
+    <Resource Include="player\kid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="player\0.png" />
+    <Resource Include="player\1.png" />
+    <Resource Include="player\2.png" />
+    <Resource Include="player\3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

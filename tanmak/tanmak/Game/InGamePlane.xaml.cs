@@ -6,7 +6,7 @@ using tanmak.Engine;
 namespace tanmak.Game
 {
     /// <summary>
-    /// InGamePlane.xaml에 대한 상호 작용 논리
+    /// InGamePlane.xaml
     /// </summary>
     public partial class InGamePlane : UserControl, GamePlaneControl
     {
