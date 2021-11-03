@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
@@ -29,7 +25,8 @@ namespace tanmak.Game
             Width = 14;
             Height = 14;
 
-            Sprite = new RenctangleSprite(new SolidColorBrush(Color.FromRgb(255, 50, 50)), Width, Height);
+            //Sprite = new RenctangleSprite(new SolidColorBrush(Color.FromRgb(255, 50, 50)), Width, Height);
+            Sprite = new ImageSprite("pack://application:,,,/kid.png", 40);
 
             ScoreManager = new ScoreManager();
 

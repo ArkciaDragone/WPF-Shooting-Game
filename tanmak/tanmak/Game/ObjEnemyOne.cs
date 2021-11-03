@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Threading;
 using tanmak.Engine;
@@ -64,7 +61,7 @@ namespace tanmak.Game
             timer.Interval = TimeSpan.FromMilliseconds(500);
             timer.Tick += delegate
             {
-                double x = rand.NextDouble(10, World.Width - 10 - 80);
+                double x = rand.NextDouble(10, World.Width - 90);
 
                 double duration = Math.Abs(x - X) * 8;
 

@@ -8,10 +8,11 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>tanmak</RootNamespace>
     <AssemblyName>tanmak</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -56,31 +57,32 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Engine\ImageSprite.cs" />
     <Compile Include="Engine\CircleSprite.cs" />
     <Compile Include="Engine\Defaults.cs" />
     <Compile Include="Engine\GameObject.cs" />
     <Compile Include="Engine\GamePlaneControl.cs" />
     <Compile Include="Engine\Random.cs" />
-    <Compile Include="Game\InGame\Bulleter.cs" />
-    <Compile Include="Game\InGame\CircleNormalBulleter.cs" />
-    <Compile Include="Game\InGame\EnemyBullet.cs" />
-    <Compile Include="Game\InGame\GuidedBullet.cs" />
-    <Compile Include="Game\InGame\GuidedBulleter.cs" />
-    <Compile Include="Game\InGame\CircleNormalBullet.cs" />
-    <Compile Include="Game\InGame\InGamePlane.xaml.cs">
+    <Compile Include="Game\Bulleter.cs" />
+    <Compile Include="Game\CircleNormalBulleter.cs" />
+    <Compile Include="Game\EnemyBullet.cs" />
+    <Compile Include="Game\GuidedBullet.cs" />
+    <Compile Include="Game\GuidedBulleter.cs" />
+    <Compile Include="Game\CircleNormalBullet.cs" />
+    <Compile Include="Game\InGamePlane.xaml.cs">
       <DependentUpon>InGamePlane.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Game\InGame\ObjComboMessage.cs" />
-    <Compile Include="Game\InGame\ObjEnemyCreater.cs" />
-    <Compile Include="Game\InGame\ObjEnemyOne.cs" />
-    <Compile Include="Game\InGame\ObjOwnBullet.cs" />
-    <Compile Include="Game\InGame\ObjPlayer.cs" />
+    <Compile Include="Game\ObjComboMessage.cs" />
+    <Compile Include="Game\ObjEnemyCreater.cs" />
+    <Compile Include="Game\ObjEnemyOne.cs" />
+    <Compile Include="Game\ObjOwnBullet.cs" />
+    <Compile Include="Game\ObjPlayer.cs" />
     <Compile Include="Engine\RenctangleSprite.cs" />
     <Compile Include="Engine\Sprite.cs" />
-    <Compile Include="Game\InGame\ScoreManager.cs" />
-    <Compile Include="Game\InGame\TanmakWorld.cs" />
+    <Compile Include="Game\ScoreManager.cs" />
+    <Compile Include="Game\TanmakWorld.cs" />
     <Compile Include="Engine\World.cs" />
-    <Page Include="Game\InGame\InGamePlane.xaml">
+    <Page Include="Game\InGamePlane.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -124,6 +126,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="kid.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

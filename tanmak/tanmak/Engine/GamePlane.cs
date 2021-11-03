@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace tanmak.Engine
@@ -37,18 +32,9 @@ namespace tanmak.Engine
         public double ViewScaleX { get; set; } = 1;
         public double ViewScaleY { get; set; } = 1;
 
-        protected override Visual GetVisualChild(int index)
-        {
-            return canvas[index];
-        }
+        protected override Visual GetVisualChild(int index) => canvas[index];
 
-        protected override int VisualChildrenCount
-        {
-            get
-            {
-                return canvas.Count;
-            }
-        }
+        protected override int VisualChildrenCount => canvas.Count;
 
         public GamePlane()
         {
@@ -59,12 +45,11 @@ namespace tanmak.Engine
 
         private GamePlaneControl GetGamePlaneParent(DependencyObject obj)
         {
-            if(obj != null && obj is FrameworkElement)
+            if (obj != null && obj is FrameworkElement element)
             {
                 if (obj is GamePlaneControl)
                     return (GamePlaneControl)obj;
-
-                return GetGamePlaneParent(((FrameworkElement)obj).Parent);
+                return GetGamePlaneParent(element.Parent);
             }
             return null;
         }
@@ -77,11 +62,6 @@ namespace tanmak.Engine
         }
 
         private void CompositionTarget_Rendering(object sender, EventArgs e)
-        {
-            Render();
-        }
-
-        private void Render()
         {
             if (_world != null)
             {

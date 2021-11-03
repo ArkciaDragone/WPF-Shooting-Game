@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 
@@ -109,28 +106,15 @@ namespace tanmak.Engine
 
         internal void GarbageCollection()
         {
-            bool on = true;
             int index = 0;
-            while (on)
-            {
+            while (true)
                 if (index >= Objects.Count)
-                {
-                    on = false;
-
                     break;
-                }
                 else
-                {
                     if (Objects[index].IsDied)
-                    {
                         Objects.RemoveAt(index);
-                    }
                     else
-                    {
                         index++;
-                    }
-                }
-            }
         }
     }
 }
