@@ -28,7 +28,7 @@ namespace tanmak.Game
 
             //Sprite = new RenctangleSprite(new SolidColorBrush(Color.FromRgb(255, 50, 50)), Width, Height);
             string[] spriteSheet = new string[] { "player/0.png", "player/1.png", "player/2.png", "player/3.png" };
-            Sprite = new ImageSprite(spriteSheet, 40, new Point(1.5,-10));
+            Sprite = new ImageSprite(spriteSheet, 40, 0, new Point(-11.5, -10));
 
             ScoreManager = new ScoreManager();
 

@@ -66,9 +66,8 @@ namespace tanmak.Engine
             if (PaddingObjects.Count > 0)
             {
                 Objects.AddRange(PaddingObjects);
+                PaddingObjects.Clear();
             }
-
-            PaddingObjects.Clear();
         }
 
         public void AddObject(GameObject obj)
