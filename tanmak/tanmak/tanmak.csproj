@@ -60,10 +60,13 @@
     <Compile Include="Bulleters\RotateBulleter.cs" />
     <Compile Include="Bulleters\CircleBulleter.cs" />
     <Compile Include="BulletSkin\EmptyBulletSkin.cs" />
+    <Compile Include="BulletSkin\RedBigTamaSkin.cs" />
+    <Compile Include="BulletSkin\YellowBigTamaSkin.cs" />
     <Compile Include="BulletSkin\FireBallSkin.cs" />
     <Compile Include="BulletSkin\IceBallSkin.cs" />
     <Compile Include="Bullets\CircleBullet.cs" />
     <Compile Include="Bullets\LinearBullet.cs" />
+    <Compile Include="Enemies\TenshiInSunriseCountry.cs" />
     <Compile Include="Enemies\ObjEnemyZero.cs" />
     <Compile Include="Engine\ImageSprite.cs" />
     <Compile Include="Engine\CircleSprite.cs" />
@@ -152,6 +155,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Sources\FireBall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sources\BigTama_Yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sources\Comey.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sources\BigTama_Red.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -12,7 +12,7 @@ namespace tanmak.BulletSkin
         public IceBallSkin()
         {
             string[] Fn = { "Sources/IceBall.png" };
-            Ret = new Engine.ImageSprite(Fn, 27);
+            Ret = new Engine.ImageSprite(Fn, 27, 0);
             Width = Height = 27;
         }
        

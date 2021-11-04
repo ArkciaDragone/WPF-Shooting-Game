@@ -24,6 +24,8 @@ namespace tanmak.Game
             double count = Ways;
 
             double baseAngle = Ang;
+            if(baseAngle < -9999)
+                   baseAngle = Random.NextDouble(0, 360);
 
             for (int i = 0; i < count; i++)
             {
@@ -32,7 +34,6 @@ namespace tanmak.Game
 
                 double angle_rad = angle / 180 * Math.PI;
                 double speed = Spd ;
-
                 double xvec = Math.Cos(angle_rad) * speed;
                 double yvec = Math.Sin(angle_rad) * speed;
 

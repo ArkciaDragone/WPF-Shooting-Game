@@ -53,5 +53,8 @@ namespace tanmak.Engine
 
         public void SetAngularSpeed(double speed) => angSpeed = speed;
         public void SetAngle(double angle) => currentAngle = angle;
+
+        public int GetHeight() => (int)_height;
+        public int GetWidth() => (int)_width;
     }
 }

@@ -29,7 +29,7 @@ namespace tanmak.Game
             this.player = player;
 
             double av = 0.7, rv = 1.45;
-            var I = new IceBallSkin();
+            var I = new YellowBigTamaSkin();
             var F = new FireBallSkin();
             bullets.Add(new RotateBulleter(I, 20, 0, av, 0, rv, this));
             Inter.Add(2);
