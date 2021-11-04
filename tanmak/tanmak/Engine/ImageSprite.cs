@@ -7,7 +7,7 @@ namespace tanmak.Engine
 {
     public class ImageSprite : Sprite
     {
-        double _width, _height, currentAngle;
+        double _width, _height, currentAngle, _alpha = 1;
         ImageSource[] sources;
         uint frame = 0;
         uint animWait, wait;
@@ -41,7 +41,9 @@ namespace tanmak.Engine
 
             currentAngle += angSpeed ?? 0;
             dc.PushTransform(new RotateTransform(currentAngle, center.X, center.Y));
+            dc.PushOpacity(_alpha);
             dc.DrawImage(sources[frame % sources.Length], new Rect(lt, new Size(_width, _height)));
+            dc.Pop();
             dc.Pop();
 
             if (wait++ >= animWait)
@@ -53,7 +55,11 @@ namespace tanmak.Engine
 
         public void SetAngularSpeed(double speed) => angSpeed = speed;
         public void SetAngle(double angle) => currentAngle = angle;
-
+        public void SetAlpha(double alpha)
+        {
+            if (alpha >= 0 && alpha <= 1) _alpha = alpha;
+            else throw new ArgumentOutOfRangeException(nameof(alpha));
+        }
         public int GetHeight() => (int)_height;
         public int GetWidth() => (int)_width;
     }
