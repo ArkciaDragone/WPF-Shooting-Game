@@ -13,8 +13,8 @@ namespace tanmak.BulletSkin
         public SimpleYellowBigTamaSkin()
         {
             Ret = new tanmak.Engine.Circle2Sprite(
-                new SolidColorBrush(Color.FromArgb(230, 220, 220, 50)), 15,
-                new SolidColorBrush(Color.FromArgb(150, 200, 200, 50)), 30);
+                new SolidColorBrush(Color.FromArgb(230, 230, 255, 50)), 15,
+                new SolidColorBrush(Color.FromArgb(110, 230, 245, 0)), 30);
             Width = Height = 30;//((Engine.ImageSprite)Ret).GetHeight();
             //((Engine.ImageSprite)Ret).SetAngularSpeed(0.6);
         }

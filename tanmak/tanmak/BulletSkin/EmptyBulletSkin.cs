@@ -18,11 +18,10 @@ namespace tanmak.BulletSkin
         protected Sprite Ret;
         public EmptyBulletSkin()
         {
-            Ret = new Engine.CircleSprite(new SolidColorBrush(Color.FromRgb(0, 255, 255)), 5);
-            Width = Height = 10;
+            
         }
 
-        public Sprite GetSprit()
+        public virtual Sprite GetSprit()
         {
             return Ret;
         }

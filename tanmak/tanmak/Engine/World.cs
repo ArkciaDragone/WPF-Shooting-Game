@@ -24,15 +24,15 @@ namespace tanmak.Engine
 
             Height = Plane.ActualHeight;
         }
-
         public virtual void OnRender(DrawingContext dc)
         {
             foreach (GameObject obj in Objects)
             {
                 if (!obj.Dead)
-                {
-                    obj.OnRender(dc);
-                }
+                    if(obj.X >= 0-30 && obj.X < Width+30 && obj.Y >= 0-30 && obj.Y <= Height+30)
+                    {
+                        obj.OnRender(dc);
+                    }
             }
         }
 
@@ -49,7 +49,7 @@ namespace tanmak.Engine
                     obj.OnUpdate();
                 }
             }
-
+            GarbageCollection();
             ProcessPaddingObjects(true);
         }
 

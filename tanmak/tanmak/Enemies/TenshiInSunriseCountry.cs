@@ -30,13 +30,13 @@ namespace tanmak.Game
 
             this.player = player;
 
-            double av = 0.19, rv = 2.1;
+            double av = 0.15, rv = 1.2;
             var I = new SimpleYellowBigTamaSkin();
             var R = new SimpleRedBigTamaSkin();
-            var E = new SimpleIceBall();
+            var E = new SimpleIceBallSkin();
 
-            var Ways = 25;
-            var Waves = 3;//*2
+            var Ways = 30;
+            var Waves = 5;//*2
             var Wave_Inter = 2;
             var Global_Inter = 15 + Wave_Inter * 2 * (Waves);
             var Starting_Delay = 5;
@@ -93,15 +93,15 @@ namespace tanmak.Game
         private void MoveToRandom()
         {
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(500);
+            timer.Interval = TimeSpan.FromMilliseconds(2000);
             var Interval = 500;
             timer.Tick += delegate
             {
                 double x = rand.NextDouble(40, World.Width - 50 - this.Width);
 
-                double duration = 300; // Math.Abs(x - X) * 8;
+                double duration = 500; // Math.Abs(x - X) * 8;
 
-                timer.Interval = TimeSpan.FromMilliseconds(duration + Interval);
+                //timer.Interval = TimeSpan.FromMilliseconds(duration + Interval);
 
                 MoveTo(x, rand.NextDouble(5, 25), duration);
             };

@@ -19,27 +19,30 @@ namespace tanmak.Game
         public ObjEnemyZero(World world, ObjPlayer player) : base(world)
         {
             
-
             Width = 80;
             Height = 48;
-            MoveTo(World.Width / 2 - Width / 2, World.Height / 3 - Height / 2, 20);
-
+            X = (World.Width - Width) / 2;
+            Y = 100;
+            MoveToRandom();
             Sprite = new RenctangleSprite(new SolidColorBrush(Color.FromRgb(0, 255, 0)), Width, Height);
 
             this.player = player;
 
             double av = 0.7, rv = 1.45;
-            var I = new YellowBigTamaSkin();
-            var F = new FireBallSkin();
-            bullets.Add(new RotateBulleter(I, 20, 0, av, 0, rv, this));
-            Inter.Add(2);
-            Delay.Add(0);
-            bullets.Add(new RotateBulleter(F, 20, 0, -av, 0, rv, this));
-            Inter.Add(2);
+            var I = new SimpleRedBigTamaSkin();
+            var F = new SimpleColorfulBallSkin(11);
+            var J = new SimpleYellowBigTamaSkin();
+            var K = new SimpleIceBallSkin();
+            bullets.Add(new ExposionBulleter(I, F, 100, 100, 200, 50,
+                100, 2.5, 1.5, this));
+            Inter.Add(10);
             Delay.Add(1);
+            bullets.Add(new SplitBulleter(J, K, -100, 100, 200, 50, 10, 3, -10000, this));
+            Inter.Add(10);
+            Delay.Add(6);
             dispancer = new DispatcherTimer();
             int Tick = 0;
-            dispancer.Interval = TimeSpan.FromMilliseconds(600);
+            dispancer.Interval = TimeSpan.FromMilliseconds(200);
             dispancer.Tick += delegate
             {
                 ++Tick;
@@ -48,7 +51,7 @@ namespace tanmak.Game
                     if((Tick - Delay[bulletIndex]) % Inter[bulletIndex] == 0)
                         bullets[bulletIndex].Shoot();
 
-                dispancer.Interval = TimeSpan.FromMilliseconds(350);
+                //dispancer.Interval = TimeSpan.FromMilliseconds(35000);
             };
 
             dispancer.Start();
@@ -66,6 +69,25 @@ namespace tanmak.Game
                     }
                 }
             }
+        }
+
+        private void MoveToRandom()
+        {
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(1000);
+            var Interval = 500;
+            timer.Tick += delegate
+            {
+                double x = rand.NextDouble(40, World.Width - 50 - this.Width);
+
+                double duration = 500; // Math.Abs(x - X) * 8;
+
+                //timer.Interval = TimeSpan.FromMilliseconds(duration + Interval);
+
+                MoveTo(x, rand.NextDouble(5, 25), duration);
+            };
+
+            timer.Start();
         }
 
     }

@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Media;
-
+using System;
+using tanmak.Engine;
 namespace tanmak.Engine
 {
     public class Circle2Sprite : Sprite

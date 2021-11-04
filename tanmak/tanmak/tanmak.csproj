@@ -57,11 +57,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Bulleters\SplitBulleter.cs" />
+    <Compile Include="Bulleters\ExposionBulleter.cs" />
+    <Compile Include="Bulleters\NullBulleter.cs" />
     <Compile Include="Bulleters\RotateBulleter.cs" />
     <Compile Include="Bulleters\CircleBulleter.cs" />
     <Compile Include="BulletSkin\Circle2Sprite.cs" />
     <Compile Include="BulletSkin\EmptyBulletSkin.cs" />
-    <Compile Include="BulletSkin\SimpleIceBall.cs" />
+    <Compile Include="BulletSkin\SimpleColorfulBallSkin.cs" />
+    <Compile Include="BulletSkin\SimpleIceBallSkin.cs" />
     <Compile Include="BulletSkin\SimpleYellowBigTamaSkin.cs" />
     <Compile Include="BulletSkin\SimpleRedBigTamaSkin.cs" />
     <Compile Include="BulletSkin\RedBigTamaSkin.cs" />
@@ -70,6 +74,7 @@
     <Compile Include="BulletSkin\IceBallSkin.cs" />
     <Compile Include="Bullets\CircleBullet.cs" />
     <Compile Include="Bullets\LinearBullet.cs" />
+    <Compile Include="Bullets\StoppingBullet.cs" />
     <Compile Include="Enemies\TenshiInSunriseCountry.cs" />
     <Compile Include="Enemies\ObjEnemyZero.cs" />
     <Compile Include="Engine\ImageSprite.cs" />

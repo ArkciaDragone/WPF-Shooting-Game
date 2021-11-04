@@ -89,7 +89,7 @@ namespace tanmak.Engine
 
         public void CheckOutOfBounds()
         {
-            if (X < -Width || X > World.Width + Width || Y < -Height || Y > World.Height + Height)
+            if (X < -World.Width || X > World.Width + Width || Y < -World.Height || Y > World.Height + Height)
             {
                 Dead = true;
             }

@@ -58,26 +58,31 @@ namespace tanmak.Engine
             CompositionTarget.Rendering += CompositionTarget_Rendering;
         }
 
+        int PTN = 0;
         private void CompositionTarget_Rendering(object sender, EventArgs e)
         {
             if (_world != null)
             {
                 _world.OnUpdate();
-
-                DrawingVisual view = new DrawingVisual();
-
-                using (DrawingContext dc = view.RenderOpen())
+                ++PTN;
+                if (PTN % 5 == 0 || PTN % 5 == 3)
+                //if (PTN % 2 == 0)
                 {
-                    _world.OnRender(dc);
+                    DrawingVisual view = new DrawingVisual();
+
+                    using (DrawingContext dc = view.RenderOpen())
+                    {
+                        _world.OnRender(dc);
+                    }
+
+                    TransformGroup group = new TransformGroup();
+                    group.Children.Add(new TranslateTransform(ViewOffsetX, ViewOffsetY));
+                    group.Children.Add(new ScaleTransform() { CenterX = ViewScaleOriginX, CenterY = ViewScaleOriginY, ScaleX = ViewScaleX, ScaleY = ViewScaleY });
+                    PlaneControl.SetTransfromOrigin(new Point(ViewScaleOriginX, ViewScaleOriginY));
+                    PlaneControl.SetTransfrom(group);
+
+                    PushVisual(view);
                 }
-
-                TransformGroup group = new TransformGroup();
-                group.Children.Add(new TranslateTransform(ViewOffsetX, ViewOffsetY));
-                group.Children.Add(new ScaleTransform() { CenterX = ViewScaleOriginX, CenterY = ViewScaleOriginY, ScaleX = ViewScaleX, ScaleY = ViewScaleY });
-                PlaneControl.SetTransfromOrigin(new Point(ViewScaleOriginX, ViewScaleOriginY));
-                PlaneControl.SetTransfrom(group);
-
-                PushVisual(view);
             }
         }
 

@@ -8,9 +8,9 @@ using System.Windows.Media;
 
 namespace tanmak.BulletSkin
 {
-    public class SimpleIceBall:EmptyBulletSkin
+    public class SimpleIceBallSkin:EmptyBulletSkin
     {
-        public SimpleIceBall()
+        public SimpleIceBallSkin()
         {
             Ret = new tanmak.Engine.CircleSprite(
                 new SolidColorBrush(Color.FromArgb(200, 100, 100, 255)), 15);
