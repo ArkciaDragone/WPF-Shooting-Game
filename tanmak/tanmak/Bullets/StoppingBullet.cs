@@ -51,7 +51,6 @@ namespace tanmak.Game
                 DeathCall?.Invoke(X, Y);
                 this.Dead = true;
             }
-            CheckOutOfBounds();
         }
     }
 }

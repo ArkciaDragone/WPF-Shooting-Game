@@ -15,7 +15,7 @@ namespace tanmak.Game
         DispatcherTimer bulletCreate;
         DispatcherTimer camaraShake;
         int cameraShakeCount = 0;
-        double speed = 3;
+        double hi_speed = 3, lo_speed = 1.5;
         double dyingSize = 12;
 
         public ObjPlayer(World world) : base(world)
@@ -73,25 +73,30 @@ namespace tanmak.Game
         {
             if (!ScoreManager.IsDied)
             {
-                if (Keyboard.IsKeyDown(Key.A))
+                double speed;
+                if (Keyboard.IsKeyDown(Key.LeftShift))
+                    speed = lo_speed;
+                else
+                    speed = hi_speed;
+                if (Keyboard.IsKeyDown(Key.A) || Keyboard.IsKeyDown(Key.Left))
                 {
                     X -= speed;
                 }
-                else if (Keyboard.IsKeyDown(Key.D))
+                else if (Keyboard.IsKeyDown(Key.D) || Keyboard.IsKeyDown(Key.Right))
                 {
                     X += speed;
                 }
 
-                if (Keyboard.IsKeyDown(Key.W))
+                if (Keyboard.IsKeyDown(Key.W) || Keyboard.IsKeyDown(Key.Up))
                 {
                     Y -= speed;
                 }
-                else if (Keyboard.IsKeyDown(Key.S))
+                else if (Keyboard.IsKeyDown(Key.S) || Keyboard.IsKeyDown(Key.Down))
                 {
                     Y += speed;
                 }
 
-                if (Keyboard.IsKeyDown(Key.Space))
+                if (Keyboard.IsKeyDown(Key.Space) || Keyboard.IsKeyDown(Key.Z))
                 {
                     if (bulletCreate == null)
                     {

@@ -21,8 +21,8 @@ namespace tanmak.Game
         {
             base.OnRender(dc);
 
-            dc.DrawText(new FormattedText("Score: " + ObjPlayer.ScoreManager.Score.ToString(), System.Globalization.CultureInfo.CurrentCulture, System.Windows.FlowDirection.LeftToRight, Defaults.Typeface, 12, Brushes.Black), new System.Windows.Point(5, 5));
-            dc.DrawText(new FormattedText("HP: " + ObjPlayer.ScoreManager.HP.ToString(), System.Globalization.CultureInfo.CurrentCulture, System.Windows.FlowDirection.LeftToRight, Defaults.Typeface, 12, Brushes.Black), new System.Windows.Point(5, 20));
+            //dc.DrawText(new FormattedText("Score: " + ObjPlayer.ScoreManager.Score.ToString(), System.Globalization.CultureInfo.CurrentCulture, System.Windows.FlowDirection.LeftToRight, Defaults.Typeface, 12, Brushes.Black), new System.Windows.Point(5, 15));
+            //dc.DrawText(new FormattedText("HP: " + ObjPlayer.ScoreManager.HP.ToString(), System.Globalization.CultureInfo.CurrentCulture, System.Windows.FlowDirection.LeftToRight, Defaults.Typeface, 12, Brushes.Black), new System.Windows.Point(5, 30));
         }
     }
 }

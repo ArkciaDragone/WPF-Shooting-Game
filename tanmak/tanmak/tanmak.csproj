@@ -75,6 +75,12 @@
     <Compile Include="Bullets\CircleBullet.cs" />
     <Compile Include="Bullets\LinearBullet.cs" />
     <Compile Include="Bullets\StoppingBullet.cs" />
+    <Compile Include="CardActivateAnimate\EeveeCardActivateAnimate.cs" />
+    <Compile Include="CardActivateAnimate\EmptyCardActivateAnimate.cs" />
+    <Compile Include="CardNameShow\SimpleCardName.cs" />
+    <Compile Include="Card\NormalCardObject.cs" />
+    <Compile Include="Card\TimingCardObject.cs" />
+    <Compile Include="Card\CardObject.cs" />
     <Compile Include="Enemies\TenshiInSunriseCountry.cs" />
     <Compile Include="Enemies\ObjEnemyZero.cs" />
     <Compile Include="Engine\ImageSprite.cs" />
@@ -102,6 +108,11 @@
     <Compile Include="Game\ScoreManager.cs" />
     <Compile Include="Game\TanmakWorld.cs" />
     <Compile Include="Engine\World.cs" />
+    <Compile Include="ProcessingBar\SimpleHealthBar.cs" />
+    <Compile Include="ProcessingBar\SimpleTimingBar.cs" />
+    <Compile Include="TanmakuSequence\ExposionAroundTS.cs" />
+    <Compile Include="TanmakuSequence\SunriseTenshiTS.cs" />
+    <Compile Include="TanmakuSequence\EmptyTanmakuSequence.cs" />
     <Page Include="Game\InGamePlane.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -174,5 +185,21 @@
   <ItemGroup>
     <Resource Include="Sources\BigTama_Red.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sources\Ens\1.png" />
+    <Resource Include="Sources\Ens\10.png" />
+    <Resource Include="Sources\Ens\11.png" />
+    <Resource Include="Sources\Ens\12.png" />
+    <Resource Include="Sources\Ens\13.png" />
+    <Resource Include="Sources\Ens\2.png" />
+    <Resource Include="Sources\Ens\3.png" />
+    <Resource Include="Sources\Ens\4.png" />
+    <Resource Include="Sources\Ens\5.png" />
+    <Resource Include="Sources\Ens\6.png" />
+    <Resource Include="Sources\Ens\7.png" />
+    <Resource Include="Sources\Ens\8.png" />
+    <Resource Include="Sources\Ens\9.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

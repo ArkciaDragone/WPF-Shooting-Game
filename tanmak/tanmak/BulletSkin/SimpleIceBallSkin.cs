@@ -10,11 +10,11 @@ namespace tanmak.BulletSkin
 {
     public class SimpleIceBallSkin:EmptyBulletSkin
     {
-        public SimpleIceBallSkin()
+        public SimpleIceBallSkin(int r=15)
         {
             Ret = new tanmak.Engine.CircleSprite(
-                new SolidColorBrush(Color.FromArgb(200, 100, 100, 255)), 15);
-            Width = Height = 30;//((Engine.ImageSprite)Ret).GetHeight();
+                new SolidColorBrush(Color.FromArgb(200, 100, 100, 255)), r);
+            Width = Height = r * 2;//((Engine.ImageSprite)Ret).GetHeight();
             //((Engine.ImageSprite)Ret).SetAngularSpeed(0.6);
         }
        

@@ -10,6 +10,12 @@ namespace tanmak.Engine
         public List<GameObject> Objects = new List<GameObject>();
         public List<GameObject> PaddingObjects = new List<GameObject>();
 
+        public List<GameObject> TopMostObjects = new List<GameObject>();
+        public List<GameObject> TopMostPadding = new List<GameObject>();
+
+        public List<GameObject> TopTopMostObjects = new List<GameObject>();
+        public List<GameObject> TopTopMostPadding = new List<GameObject>();
+
         public double Width { get; set; }
 
         public double Height { get; set; }
@@ -34,6 +40,12 @@ namespace tanmak.Engine
                         obj.OnRender(dc);
                     }
             }
+            foreach (GameObject obj in TopMostObjects)
+                if (!obj.Dead)
+                    obj.OnRender(dc);
+            foreach (GameObject obj in TopTopMostObjects)
+                if (!obj.Dead)
+                    obj.OnRender(dc);
         }
 
         public virtual void OnUpdate()
@@ -49,7 +61,15 @@ namespace tanmak.Engine
                     obj.OnUpdate();
                 }
             }
+            foreach (GameObject obj in TopMostObjects)
+                if(!obj.Dead)
+                    obj.OnUpdate();
+            foreach (GameObject obj in TopTopMostObjects)
+                if (!obj.Dead)
+                    obj.OnUpdate();
             GarbageCollection();
+            GarbageCollection_(ref TopMostObjects);
+            GarbageCollection_(ref TopTopMostObjects);
             ProcessPaddingObjects(true);
         }
 
@@ -61,6 +81,10 @@ namespace tanmak.Engine
                 {
                     obj.OnUpdate();
                 }
+                foreach (GameObject obj in TopMostPadding)
+                    obj.OnUpdate();
+                foreach (GameObject obj in TopTopMostPadding)
+                    obj.OnUpdate();
             }
 
             if (PaddingObjects.Count > 0)
@@ -68,11 +92,29 @@ namespace tanmak.Engine
                 Objects.AddRange(PaddingObjects);
                 PaddingObjects.Clear();
             }
+            if(TopMostPadding.Count>0)
+            {
+                TopMostObjects.AddRange(TopMostPadding);
+                TopMostPadding.Clear();
+            }
+            if (TopTopMostPadding.Count > 0)
+            {
+                TopTopMostObjects.AddRange(TopTopMostPadding);
+                TopTopMostPadding.Clear();
+            }
         }
 
         public void AddObject(GameObject obj)
         {
             PaddingObjects.Add(obj);
+        }
+        public void AddTopMost(GameObject obj)
+        {
+            TopMostPadding.Add(obj);
+        }
+        public void AddTopTopMost(GameObject obj)
+        {
+            TopTopMostPadding.Add(obj);
         }
 
         public void DrawText(DrawingContext dc, string text = "", double x = 0, double y = 0, double size = 12, HorizontalAlignment ha = HorizontalAlignment.Left, VerticalAlignment va = VerticalAlignment.Top)
@@ -103,13 +145,17 @@ namespace tanmak.Engine
 
         internal void GarbageCollection()
         {
+            GarbageCollection_(ref Objects);
+        }
+        internal void GarbageCollection_(ref List<GameObject> Objects_)
+        {
             int index = 0;
             while (true)
-                if (index >= Objects.Count)
+                if (index >= Objects_.Count)
                     break;
                 else
-                    if (Objects[index].Dead)
-                    Objects.RemoveAt(index);
+                    if (Objects_[index].Dead)
+                    Objects_.RemoveAt(index);
                 else
                     index++;
         }

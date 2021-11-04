@@ -65,6 +65,7 @@ namespace tanmak.Game
                 {
                     if (IsHit(this, obj))
                     {
+                        ++HitCount;
                         player.ScoreManager.EnemyHiited(ScoreManager.NormalMissileDamage);
                     }
                 }

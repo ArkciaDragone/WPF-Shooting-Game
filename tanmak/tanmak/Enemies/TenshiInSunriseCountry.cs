@@ -4,6 +4,11 @@ using System.Windows.Media;
 using System.Windows.Threading;
 using tanmak.Engine;
 using tanmak.BulletSkin;
+using tanmak.TanmakuSequence;
+using tanmak.CardActivateAnimate;
+using tanmak.ProcessingBar;
+using tanmak.CardNameShow;
+using tanmak.Card;
 
 namespace tanmak.Game
 {
@@ -18,17 +23,46 @@ namespace tanmak.Game
 
         public TenshiInSunriseCountry(World world, ObjPlayer player) : base(world)
         {
+            this.player = player;
+            string[] efn = new string[13];
+            for (int wi = 0; wi < 13; ++wi)
+                efn[wi] = "Sources/Ens/" + (wi + 1).ToString() + ".png";
             string[] fn = { "Sources/Comey.ico" };
-            Sprite = new ImageSprite(fn, 100);
+            Sprite = new ImageSprite(efn, 60, animationWait:1);
 
             Width = ((ImageSprite)Sprite).GetWidth();
             Height = ((ImageSprite)Sprite).GetHeight();
             //MoveTo(World.Width / 2 - Width / 2, World.Height / 3 - Height / 2, 0.2);
             MoveToRandom();
             //Sprite = new RenctangleSprite(new SolidColorBrush(Color.FromRgb(0, 255, 0)), Width, Height);
+            var a = new NormalCardObject(World,new SimpleCardName(World, "『伊布』布伊"),
+                new SunriseTenshiTanmakuSequence(World, this, Times:3), new EeveeCardActivateAnimate(World),
+                this, 10);
+            var b = new TimingCardObject(World, new SimpleCardName(World, "『伊布』布伊2"),
+                new SunriseTenshiTanmakuSequence(World, this, Times:3), new EeveeCardActivateAnimate(World),
+                this);
+            a.SetEndCall(b.Activate);
+            a.Activate();
+            return;
+
+            var fst = new EeveeCardActivateAnimate(World);
+
+            var cnm = new SimpleCardName(World, "『伊布』布伊");
+            EmptyTanmakuSequence emp = new SunriseTenshiTanmakuSequence(world, this, Times:2);
+            EmptyTanmakuSequence nex = new ExposionAroundTS(world, this);
+            SimpleTimingBar smba = new SimpleTimingBar(World, emp.EndTick + nex.EndTick);
+            fst.SetEndCall(delegate { emp.Activate(); smba.Activate(); });
+            emp.SetEndCall(nex.Activate);
+            nex.SetEndCall(delegate { cnm.Stop(); });
 
 
-            this.player = player;
+
+            cnm.Activate();
+            fst.Activate();
+
+            return;
+
+            
 
             double av = 0.15, rv = 1.2;
             var I = new SimpleYellowBigTamaSkin();
@@ -83,6 +117,7 @@ namespace tanmak.Game
                 {
                     if (IsHit(this, obj))
                     {
+                        HitCount++;
                         player.ScoreManager.EnemyHiited(ScoreManager.NormalMissileDamage);
                         obj.Dead = true;
                     }

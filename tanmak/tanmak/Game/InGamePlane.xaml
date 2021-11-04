@@ -9,6 +9,6 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <engine:GamePlane x:Name="plane"/>
-        <Button x:Name="Bt_Restart" Content="restart" Padding="5" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Center" Click="Bt_Restart_Click"/>
+        <Button x:Name="Bt_Restart" Content="restart" Padding="5" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Center" Click="Bt_Restart_Click" Visibility="Hidden"/>
     </Grid>
 </UserControl>

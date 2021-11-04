@@ -7,6 +7,7 @@ namespace tanmak.Engine
 {
     public abstract class GameObject : DependencyObject
     {
+        public int HitCount;
         public static DependencyProperty XProperty = DependencyProperty.Register("X", typeof(double), typeof(GameObject));
         public double X
         {

@@ -14,21 +14,34 @@ namespace tanmak.Engine
         Point tune;
         double? angSpeed = null;
 
-        public ImageSprite(string[] filenames, double width, double height = 0, Point fineTune = new Point(), uint animationWait = 10)
+        public ImageSprite(string[] filenames, double width = 0, double height = 0, Point fineTune = new Point(), uint animationWait = 10)
         {
             sources = new ImageSource[filenames.Length];
             for (int i = 0; i < filenames.Length; i++)
                 sources[i] = new BitmapImage(new Uri("pack://application:,,,/" + filenames[i]));
 
-            if (width < 0 || height < 0)
+            if (width < 0 || height < 0 || (width == 0 && height == 0))
             {
                 _width = sources[0].Width;
                 _height = sources[0].Height;
             }
             else
             {
-                _width = width;
-                if (height == 0) _height = sources[0].Height * _width / sources[0].Width;
+                if (height == 0)
+                {
+                    _height = sources[0].Height * width / sources[0].Width;
+                    _width = width;
+                }
+                else if (width == 0)
+                {
+                    _height = height;
+                    _width = sources[0].Width * _height / sources[0].Height;
+                }
+                else
+                {
+                    _height = height;
+                    _width = width;
+                }
             }
             animWait = animationWait;
             tune = fineTune;
