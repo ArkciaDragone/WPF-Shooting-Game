@@ -59,7 +59,11 @@
     </ApplicationDefinition>
     <Compile Include="Bulleters\RotateBulleter.cs" />
     <Compile Include="Bulleters\CircleBulleter.cs" />
+    <Compile Include="BulletSkin\Circle2Sprite.cs" />
     <Compile Include="BulletSkin\EmptyBulletSkin.cs" />
+    <Compile Include="BulletSkin\SimpleIceBall.cs" />
+    <Compile Include="BulletSkin\SimpleYellowBigTamaSkin.cs" />
+    <Compile Include="BulletSkin\SimpleRedBigTamaSkin.cs" />
     <Compile Include="BulletSkin\RedBigTamaSkin.cs" />
     <Compile Include="BulletSkin\YellowBigTamaSkin.cs" />
     <Compile Include="BulletSkin\FireBallSkin.cs" />

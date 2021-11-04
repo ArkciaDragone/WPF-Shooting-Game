@@ -30,15 +30,15 @@ namespace tanmak.Game
 
             this.player = player;
 
-            double av = 0.19, rv = 2.2;
-            var I = new YellowBigTamaSkin();
-            var R = new RedBigTamaSkin();
-            var E = new IceBallSkin();
+            double av = 0.19, rv = 2.1;
+            var I = new SimpleYellowBigTamaSkin();
+            var R = new SimpleRedBigTamaSkin();
+            var E = new SimpleIceBall();
 
-            var Ways = 10;
+            var Ways = 25;
             var Waves = 3;//*2
-            var Wave_Inter = 4;
-            var Global_Inter = 30 + Wave_Inter * 2 * (Waves);
+            var Wave_Inter = 2;
+            var Global_Inter = 15 + Wave_Inter * 2 * (Waves);
             var Starting_Delay = 5;
 
             var ms_per_tic = 100;
@@ -56,7 +56,7 @@ namespace tanmak.Game
             int Ws = 10;
             bullets.Add(new CircleBulleter(E, Ws, -10000, 2, this));
             Delay.Add(Starting_Delay);
-            Inter.Add(Wave_Inter * 4 - 2);
+            Inter.Add(Wave_Inter * 8 - 2);
 
 
             dispancer = new DispatcherTimer();
