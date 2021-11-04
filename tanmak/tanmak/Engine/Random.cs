@@ -5,7 +5,14 @@ namespace tanmak.Engine
     public class Random
     {
         System.Random rand = new System.Random((int)DateTime.UtcNow.TimeOfDay.TotalMilliseconds);
+        public Random()
+        {
 
+        }
+        public Random(int e)
+        {
+            rand = new System.Random((int)DateTime.UtcNow.TimeOfDay.TotalMilliseconds + e);
+        }
         public double NextDouble()
         {
             return rand.NextDouble();

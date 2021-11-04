@@ -57,24 +57,40 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Bulleters\RandomExposingBulleter.cs" />
+    <Compile Include="Bulleters\RandomWallBulleter.cs" />
+    <Compile Include="Bulleters\RandomFallBulleter.cs" />
     <Compile Include="Bulleters\SplitBulleter.cs" />
     <Compile Include="Bulleters\ExposionBulleter.cs" />
     <Compile Include="Bulleters\NullBulleter.cs" />
     <Compile Include="Bulleters\RotateBulleter.cs" />
     <Compile Include="Bulleters\CircleBulleter.cs" />
+    <Compile Include="BulletSkin\LightBigTamaSkin.cs" />
+    <Compile Include="BulletSkin\BlackSmallTamaSkin.cs" />
+    <Compile Include="BulletSkin\BlackMediumTamaSkin.cs" />
     <Compile Include="BulletSkin\Circle2Sprite.cs" />
     <Compile Include="BulletSkin\EmptyBulletSkin.cs" />
+    <Compile Include="BulletSkin\IceShardSkin.cs" />
+    <Compile Include="BulletSkin\SimpleBlueBigTamaSkin.cs" />
+    <Compile Include="BulletSkin\SimpleDarkBlueBigTamaSkin.cs" />
+    <Compile Include="BulletSkin\SimpleLightBigTamaSkin.cs" />
+    <Compile Include="BulletSkin\StarSkin.cs" />
     <Compile Include="BulletSkin\SimpleColorfulBallSkin.cs" />
     <Compile Include="BulletSkin\SimpleIceBallSkin.cs" />
     <Compile Include="BulletSkin\SimpleYellowBigTamaSkin.cs" />
     <Compile Include="BulletSkin\SimpleRedBigTamaSkin.cs" />
     <Compile Include="BulletSkin\RedBigTamaSkin.cs" />
+    <Compile Include="BulletSkin\BlackBigTamaSkin.cs" />
     <Compile Include="BulletSkin\YellowBigTamaSkin.cs" />
     <Compile Include="BulletSkin\FireBallSkin.cs" />
     <Compile Include="BulletSkin\IceBallSkin.cs" />
     <Compile Include="Bullets\CircleBullet.cs" />
+    <Compile Include="Bullets\DirectedLinearBullet.cs" />
     <Compile Include="Bullets\LinearBullet.cs" />
     <Compile Include="Bullets\StoppingBullet.cs" />
+    <Compile Include="CardActivateAnimate\UmbreonCardActivateAnimates.cs" />
+    <Compile Include="CardActivateAnimate\VapreonCardActivateAnimates.cs" />
+    <Compile Include="CardActivateAnimate\GlaceonCardActivateAnimates.cs" />
     <Compile Include="CardActivateAnimate\EeveeCardActivateAnimate.cs" />
     <Compile Include="CardActivateAnimate\EmptyCardActivateAnimate.cs" />
     <Compile Include="CardNameShow\SimpleCardName.cs" />
@@ -108,9 +124,22 @@
     <Compile Include="Game\ScoreManager.cs" />
     <Compile Include="Game\TanmakWorld.cs" />
     <Compile Include="Engine\World.cs" />
+    <Compile Include="Halo\YellowHalo.cs" />
+    <Compile Include="Halo\RedHalo.cs" />
+    <Compile Include="Halo\PurpleHalo.cs" />
+    <Compile Include="Halo\OrangeHallo.cs" />
+    <Compile Include="Halo\LightBlueHalo.cs" />
+    <Compile Include="Halo\GreenHalo.cs" />
+    <Compile Include="Halo\BlueHalo.cs" />
+    <Compile Include="Halo\WhiteHalo.cs" />
+    <Compile Include="Halo\EmptyHalo.cs" />
     <Compile Include="ProcessingBar\SimpleHealthBar.cs" />
     <Compile Include="ProcessingBar\SimpleTimingBar.cs" />
     <Compile Include="TanmakuSequence\ExposionAroundTS.cs" />
+    <Compile Include="TanmakuSequence\FreezingWindTS.cs" />
+    <Compile Include="TanmakuSequence\EvilWaveTS.cs" />
+    <Compile Include="TanmakuSequence\HotWaterTS.cs" />
+    <Compile Include="TanmakuSequence\HighSpeedStarTS.cs" />
     <Compile Include="TanmakuSequence\SunriseTenshiTS.cs" />
     <Compile Include="TanmakuSequence\EmptyTanmakuSequence.cs" />
     <Page Include="Game\InGamePlane.xaml">
@@ -200,6 +229,45 @@
     <Resource Include="Sources\Ens\8.png" />
     <Resource Include="Sources\Ens\9.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Sources\Star.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sources\Halos\Circle_Sqr_L.png" />
+    <Resource Include="Sources\Halos\WhiteHalo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sources\Halos\RedHalo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sources\Halos\BlueHalo.png" />
+    <Resource Include="Sources\Halos\GreenHalo.png" />
+    <Resource Include="Sources\Halos\LightBlueHalo.png" />
+    <Resource Include="Sources\Halos\OrangeHalo.png" />
+    <Resource Include="Sources\Halos\PurpleHalo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sources\Halos\YellowHalo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sources\IceShard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sources\Illust\92437488_p0.jpg" />
+    <Resource Include="Sources\Illust\92437488_p0.png" />
+    <Resource Include="Sources\Illust\93919102_p0.jpg" />
+    <Resource Include="Sources\Illust\93919102_p0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sources\BigTama_Black.png" />
+    <Resource Include="Sources\MediumTama_Black.png" />
+    <Resource Include="Sources\SmallTama_Black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sources\BigTama_Light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sources\Illust\91677258_p0.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -11,6 +11,7 @@ using tanmak.Game;
 using tanmak.Engine;
 using System.Threading;
 using System.Windows.Threading;
+using tanmak.Halo;
 
 namespace tanmak.Card
 {
@@ -19,7 +20,7 @@ namespace tanmak.Card
         SimpleHealthBar Bar;
         CALL_BACK Start;
         public NormalCardObject(World world, SimpleCardName Name, EmptyTanmakuSequence Tanmk,
-            EmptyCardActivateAnimate CardAnimate, GameObject Boss, int MaxHP, int GCD = 40):base(world,Name,Tanmk,CardAnimate,Boss)
+            EmptyCardActivateAnimate CardAnimate, GameObject Boss,EmptyHalo Halo, int MaxHP, int GCD = 40):base(world,Name,Tanmk,CardAnimate,Boss, Halo)
         {
             Bar = new SimpleHealthBar(world, MaxHP, Boss);
 
@@ -27,7 +28,7 @@ namespace tanmak.Card
             {
                 this.CardAnimate.Activate();
                 this.CardName.Activate();
-                
+                this.Halo.Activate();
             };
             this.CardAnimate.SetEndCall(delegate { 
                 Tanmaku.Activate(); 
@@ -36,6 +37,7 @@ namespace tanmak.Card
             {
                 Tanmaku.Stop();
                 this.CardName.Stop();
+                this.Halo.Stop();
                 var a = new DispatcherTimer();
                 a.Interval = TimeSpan.FromMilliseconds(GCD * 50);
                 int LTick = 0;

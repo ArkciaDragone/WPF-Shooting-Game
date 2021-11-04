@@ -6,7 +6,7 @@ namespace tanmak.Game
 {
     public class CircleBulleter : Bulleter
     {
-        Engine.Random Random = new Engine.Random();
+        static Engine.Random Random = new Engine.Random();
         int Ways;
         double Ang;
         double Spd;

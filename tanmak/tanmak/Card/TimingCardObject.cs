@@ -11,6 +11,7 @@ using tanmak.Game;
 using tanmak.Engine;
 using System.Windows.Threading;
 using System.Threading;
+using tanmak.Halo;
 
 namespace tanmak.Card
 {
@@ -19,7 +20,7 @@ namespace tanmak.Card
         SimpleTimingBar Bar;
         CALL_BACK Start;
         public TimingCardObject(World world, SimpleCardName Name, EmptyTanmakuSequence Tanmk,
-            EmptyCardActivateAnimate CardAnimate, GameObject Boss, int GCD=40):base(world,Name,Tanmk,CardAnimate,Boss)
+            EmptyCardActivateAnimate CardAnimate, GameObject Boss, EmptyHalo Halo, int GCD=40):base(world,Name,Tanmk,CardAnimate,Boss, Halo)
         {
             Bar = new SimpleTimingBar(world, Tanmaku.EndTick);
 
@@ -27,13 +28,14 @@ namespace tanmak.Card
             {
                 this.CardAnimate.Activate();
                 this.CardName.Activate();
-                
+                this.Halo.Activate();
             };
             this.CardAnimate.SetEndCall(delegate { 
                 Tanmaku.Activate(); 
                 this.Bar.Activate(); });
             this.Bar.SetEndCall(delegate
             {
+                this.Halo.Stop();
                 Tanmaku.Stop();
                 this.CardName.Stop();
                 var a = new DispatcherTimer();

@@ -7,6 +7,9 @@ namespace tanmak.Engine
 {
     public abstract class World
     {
+        public List<GameObject> UnderObjects = new List<GameObject>();
+        public List<GameObject> UnderPadding = new List<GameObject>();
+
         public List<GameObject> Objects = new List<GameObject>();
         public List<GameObject> PaddingObjects = new List<GameObject>();
 
@@ -32,6 +35,9 @@ namespace tanmak.Engine
         }
         public virtual void OnRender(DrawingContext dc)
         {
+            foreach (GameObject obj in UnderObjects)
+                if (!obj.Dead)
+                    obj.OnRender(dc);
             foreach (GameObject obj in Objects)
             {
                 if (!obj.Dead)
@@ -54,6 +60,9 @@ namespace tanmak.Engine
             Height = Plane.ActualHeight;
             ProcessPaddingObjects();
 
+            foreach (GameObject obj in UnderObjects)
+                if (!obj.Dead)
+                    obj.OnUpdate();
             foreach (GameObject obj in Objects)
             {
                 if (!obj.Dead)
@@ -67,6 +76,8 @@ namespace tanmak.Engine
             foreach (GameObject obj in TopTopMostObjects)
                 if (!obj.Dead)
                     obj.OnUpdate();
+
+            GarbageCollection_(ref UnderObjects);
             GarbageCollection();
             GarbageCollection_(ref TopMostObjects);
             GarbageCollection_(ref TopTopMostObjects);
@@ -77,6 +88,8 @@ namespace tanmak.Engine
         {
             if (doUpdate)
             {
+                foreach (GameObject obj in UnderPadding)
+                    obj.OnUpdate();
                 foreach (GameObject obj in PaddingObjects)
                 {
                     obj.OnUpdate();
@@ -87,6 +100,11 @@ namespace tanmak.Engine
                     obj.OnUpdate();
             }
 
+            if(UnderPadding.Count>0)
+            {
+                UnderObjects.AddRange(UnderPadding);
+                UnderPadding.Clear();
+            }
             if (PaddingObjects.Count > 0)
             {
                 Objects.AddRange(PaddingObjects);
@@ -115,6 +133,11 @@ namespace tanmak.Engine
         public void AddTopTopMost(GameObject obj)
         {
             TopTopMostPadding.Add(obj);
+        }
+
+        public void AddUnder(GameObject obj)
+        {
+            UnderPadding.Add(obj);
         }
 
         public void DrawText(DrawingContext dc, string text = "", double x = 0, double y = 0, double size = 12, HorizontalAlignment ha = HorizontalAlignment.Left, VerticalAlignment va = VerticalAlignment.Top)

@@ -38,7 +38,7 @@ namespace tanmak.Game
             double angle_rad = angle / 180 * Math.PI;
             X = Math.Cos(angle_rad) * r + xpro;
             Y = Math.Sin(angle_rad) * r + ypro;
-            if (r > World.Height)
+            if (r > World.Height + World.Width)
                 Dead = true;
         }
     }

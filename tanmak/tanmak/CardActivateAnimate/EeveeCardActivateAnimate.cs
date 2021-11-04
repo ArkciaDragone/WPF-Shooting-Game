@@ -51,7 +51,7 @@ namespace tanmak.CardActivateAnimate
             MaxLen = Len1 + Len2 + Len3;
             string[] Fn = { "Sources/Ens/13.png" };
             var Ht = world.Height * 0.7;
-            Sprite = new Engine.ImageSprite(Fn,height:Ht);
+            Sprite = new Engine.ImageSprite(Fn, height:Ht);
             XBegin = world.Width / 7.0;
             XEnd = world.Width / (-4.0);
             Ypos = world.Height * 0.15;
