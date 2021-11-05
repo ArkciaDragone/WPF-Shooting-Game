@@ -57,6 +57,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Bulleters\CircleCenteringBulleters.cs" />
     <Compile Include="Bulleters\RandomExposingBulleter.cs" />
     <Compile Include="Bulleters\RandomWallBulleter.cs" />
     <Compile Include="Bulleters\RandomFallBulleter.cs" />
@@ -65,6 +66,9 @@
     <Compile Include="Bulleters\NullBulleter.cs" />
     <Compile Include="Bulleters\RotateBulleter.cs" />
     <Compile Include="Bulleters\CircleBulleter.cs" />
+    <Compile Include="BulletSkin\BlueBigTamaSkin.cs" />
+    <Compile Include="BulletSkin\PurpleMediumTamaSkin.cs" />
+    <Compile Include="BulletSkin\PurpleLightBallSkin.cs" />
     <Compile Include="BulletSkin\PurpleBigTamaSkin.cs" />
     <Compile Include="BulletSkin\LightBigTamaSkin.cs" />
     <Compile Include="BulletSkin\BlackSmallTamaSkin.cs" />
@@ -92,6 +96,7 @@
     <Compile Include="Bullets\LinearBullet.cs" />
     <Compile Include="Bullets\StoppingBullet.cs" />
     <Compile Include="CardActivateAnimate\UmbreonCardActivateAnimates.cs" />
+    <Compile Include="CardActivateAnimate\SylveonCardActivateAnimates.cs" />
     <Compile Include="CardActivateAnimate\VapreonCardActivateAnimates.cs" />
     <Compile Include="CardActivateAnimate\GlaceonCardActivateAnimates.cs" />
     <Compile Include="CardActivateAnimate\EeveeCardActivateAnimate.cs" />
@@ -101,6 +106,7 @@
     <Compile Include="Card\TimingCardObject.cs" />
     <Compile Include="Card\CardObject.cs" />
     <Compile Include="Enemies\TenshiInSunriseCountry.cs" />
+    <Compile Include="Enemies\Eevees.cs" />
     <Compile Include="Enemies\ObjEnemyZero.cs" />
     <Compile Include="Engine\ImageSprite.cs" />
     <Compile Include="Engine\CircleSprite.cs" />
@@ -136,6 +142,7 @@
     <Compile Include="Halo\BlueHalo.cs" />
     <Compile Include="Halo\WhiteHalo.cs" />
     <Compile Include="Halo\EmptyHalo.cs" />
+    <Compile Include="ProcessingBar\SimpleBottomHealthBar.cs" />
     <Compile Include="ProcessingBar\SimpleHealthBar.cs" />
     <Compile Include="ProcessingBar\SimpleTimingBar.cs" />
     <Compile Include="Servant\NormalServant.cs" />
@@ -144,6 +151,8 @@
     <Compile Include="TanmakuSequence\FreezingWindTS.cs" />
     <Compile Include="TanmakuSequence\EvilWaveTS.cs" />
     <Compile Include="TanmakuSequence\AreaLimitingServantTS.cs" />
+    <Compile Include="TanmakuSequence\CircleMazeTS.cs" />
+    <Compile Include="TanmakuSequence\LightWallTS.cs" />
     <Compile Include="TanmakuSequence\ServantTestTS.cs" />
     <Compile Include="TanmakuSequence\LinkingTS.cs" />
     <Compile Include="TanmakuSequence\HotWaterTS.cs" />
@@ -261,9 +270,7 @@
     <Resource Include="Sources\IceShard.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Sources\Illust\92437488_p0.jpg" />
     <Resource Include="Sources\Illust\92437488_p0.png" />
-    <Resource Include="Sources\Illust\93919102_p0.jpg" />
     <Resource Include="Sources\Illust\93919102_p0.png" />
   </ItemGroup>
   <ItemGroup>
@@ -279,6 +286,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Sources\BigTama_Purple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sources\Purple_Light_Ball.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sources\MediumTama_Purple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sources\Illust\93547891_p0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sources\Illust\92102872_p0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sources\BigTama_Blue.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

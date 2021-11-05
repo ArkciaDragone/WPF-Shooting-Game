@@ -49,10 +49,10 @@ namespace tanmak.CardActivateAnimate
         public EeveeCardActivateAnimate(World world) : base(world)
         {
             MaxLen = Len1 + Len2 + Len3;
-            string[] Fn = { "Sources/Ens/13.png" };
-            var Ht = world.Height * 0.7;
+            string[] Fn = { "Sources/Illust/92102872_p0.png" };
+            var Ht = world.Height * 0.6;
             Sprite = new Engine.ImageSprite(Fn, height:Ht);
-            XBegin = world.Width / 7.0;
+            XBegin = world.Width / 9.0;
             XEnd = world.Width / (-4.0);
             Ypos = world.Height * 0.15;
 

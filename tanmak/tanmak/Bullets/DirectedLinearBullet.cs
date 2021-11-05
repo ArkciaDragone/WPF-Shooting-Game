@@ -13,6 +13,7 @@ namespace tanmak.Game
         double x_vec;
         double y_vec;
         double radius;
+        static Engine.Random Rand= new Engine.Random();
         public DirectedLinearBullet(EmptyBulletSkin skin,World world, double x, double y, double x_vec, double y_vec) : base(world)
         {
             X = x;
@@ -24,8 +25,10 @@ namespace tanmak.Game
             Sprite = skin.GetSprit();
             Width = skin.Width;
             Height = skin.Height;
-            if (Sprite is ImageSprite && !((ImageSprite)Sprite).IsRotate()) 
+            if (Sprite is ImageSprite && !((ImageSprite)Sprite).IsRotate())
                 ((ImageSprite)Sprite).SetAngle(Math.Atan2(y_vec, x_vec) * 180 / Math.PI + 90);
+            else if (Sprite is ImageSprite)
+                ((ImageSprite)Sprite).SetAngularSpeed(Rand.NextDouble(-1, 1)*20);
             //Sprite = new Engine.CircleSprite(new SolidColorBrush(Color.FromRgb(0, 255, 255)), radius);
         }
 

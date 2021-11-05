@@ -4,6 +4,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 using tanmak.Engine;
+using tanmak.ProcessingBar;
 
 namespace tanmak.Game
 {
@@ -15,7 +16,7 @@ namespace tanmak.Game
         DispatcherTimer bulletCreate;
         DispatcherTimer camaraShake;
         int cameraShakeCount = 0;
-        double hi_speed = 3, lo_speed = 1.5;
+        double hi_speed = 3.5, lo_speed = 2;
         double dyingSize = 12;
 
         public ObjPlayer(World world) : base(world)
@@ -34,6 +35,8 @@ namespace tanmak.Game
 
             ScoreManager.Comboed += ScoreManager_Comboed;
             ScoreManager.Dieded += ScoreManager_Dieded;
+
+            World.AddUnder(new SimpleBottomHealthBar(World, ScoreManager));
         }
 
         private void ScoreManager_Dieded(object sender, ScoreManager e)
@@ -159,7 +162,14 @@ namespace tanmak.Game
 
         public override void OnRender(DrawingContext dc)
         {
-            if (!ScoreManager.IsDied)
+            if(ScoreManager.Win)
+            {
+                World.DrawText(dc, $"You Survived With {ScoreManager.HP}/{ScoreManager.MaxHP} HP Remain", 
+                    World.Width / 2, World.Height / 2, 15, 
+                    System.Windows.HorizontalAlignment.Center, System.Windows.VerticalAlignment.Center);
+
+            }
+            else if (!ScoreManager.IsDied)
             {
                 base.OnRender(dc);
             }

@@ -36,9 +36,9 @@ namespace tanmak.Game
 
             this.player = player;
 
-            var C = new NormalCardObject(World, new SimpleCardName(World,"TESTING"),
-                new AreaLimitingServantTanmakuSequence(World,this,player),
-                new UmbreonCardActivateAnimates(world), this, new BlueHalo(World, this),20);
+            var C = new TimingCardObject(World, new SimpleCardName(World,"TESTING"),
+                new LightWallTanmakuSequence(World,this, player),player,
+                new SylveonCardActivateAnimates(world), this, new BlueHalo(World, this),20);
             C.SetEndCall(MoveAway);
             C.Activate();
 

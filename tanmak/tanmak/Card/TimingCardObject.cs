@@ -21,7 +21,7 @@ namespace tanmak.Card
         SimpleTimingBar Bar;
         CALL_BACK Start;
         public TimingCardObject(World world, SimpleCardName Name, EmptyTanmakuSequence Tanmk,ObjPlayer Player,
-            EmptyCardActivateAnimate CardAnimate, GameObject Boss, EmptyHalo Halo, int GCD=40):base(world,Name,Tanmk,CardAnimate,Boss, Halo)
+            EmptyCardActivateAnimate CardAnimate, GameObject Boss, EmptyHalo Halo, int GCD=10):base(world,Name,Tanmk,CardAnimate,Boss, Halo)
         {
             Bar = new SimpleTimingBar(world, Tanmaku.EndTick, Player);
 

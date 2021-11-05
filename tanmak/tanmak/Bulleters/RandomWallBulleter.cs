@@ -22,12 +22,14 @@ namespace tanmak.Game
 
         public override double Shoot()
         {
-            int Num = (int)(World.Width * 1.0 / (Skin.Width*1.5) + 1) + 1;
+            int Num = (int)(World.Width * 1.0 / (Skin.Width*0.7) + 1) + 1;
             double pos = 0.5 + Random.NextDouble(-RRange / 2, RRange / 2);
             for(int wi=0; wi<Num;++wi)
             {
                 double py = -30;
-                double px = wi * Skin.Width*1.5 - Skin.Width / 2;
+                double px = wi * Skin.Width*0.7 - Skin.Width / 2;
+                px += Random.NextDouble(-10, 10);
+                py += Random.NextDouble(-10, 10);
                 if (Math.Abs(px / World.Width - pos) <= SplitSize)
                     continue;
                 else

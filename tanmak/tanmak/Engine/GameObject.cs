@@ -91,6 +91,15 @@ namespace tanmak.Engine
 
         public static bool IsHit(GameObject me, GameObject other)
         {
+            double tx = me.X + me.Width / 2;
+            double ty = me.Y + me.Height / 2;
+            double mx = other.X + other.Width / 2;
+            double my = other.Y + other.Height / 2;
+            double d2 = (tx - mx) * (tx - mx) + (ty - my) * (ty - my);
+            d2 -= 2;
+
+            return d2 <= other.Width * other.Width / 4 && d2 < other.Height * other.Height / 4;
+
             return other.X >= me.X - other.Width && other.X <= me.X + me.Width &&
                 other.Y >= me.Y - other.Height && other.Y <= me.Y + me.Height;
         }

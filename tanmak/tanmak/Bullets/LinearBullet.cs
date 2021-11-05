@@ -14,8 +14,8 @@ namespace tanmak.Game
         double radius;
         public LinearBullet(EmptyBulletSkin skin,World world, double x, double y, double x_vec, double y_vec, double radius) : base(world)
         {
-            X = x;
-            Y = y;
+            X = x - skin.Width/2;
+            Y = y - skin.Height/2;
             this.x_vec = x_vec;
             this.y_vec = y_vec;
             this.radius = radius;

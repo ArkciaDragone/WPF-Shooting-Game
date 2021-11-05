@@ -15,7 +15,7 @@ namespace tanmak.Halo
         GameObject Boss;
         public OrangeHallo(World world, GameObject Boss):base(world, Boss)
         {
-            string[] Fn = { "Sources/Halos/OrangeHallo.png" };
+            string[] Fn = { "Sources/Halos/OrangeHalo.png" };
             Sprite = new Engine.ImageSprite(Fn, Size, Size);
             ((ImageSprite)Sprite).SetAngularSpeed(Rot);
         }

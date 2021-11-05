@@ -18,8 +18,10 @@ namespace tanmak.TanmakuSequence
     {
         public class TickerObject:GameObject
         {
-            public delegate void CALL_BACK();
+
+            public delegate void CALL_BACL();
             CALL_BACK DeathCall;
+
             int Ticks;
             public TickerObject(World world, int Tks, CALL_BACK Cb):base(world)
             {
@@ -41,6 +43,7 @@ namespace tanmak.TanmakuSequence
             }
         };
 
+        CALL_BACK MidTerm;
 
         int ShootInter;
         double ShootV, ShootDx;
@@ -49,8 +52,10 @@ namespace tanmak.TanmakuSequence
         int Wait;
         public SingleAreaLimitingServantTanmakuSequence(World world, GameObject parent,
             EmptyBulletSkin Skin,
-            int FirstShootrs, int ShootInterv, double ShootV, double ShootDx):base(world, parent)
+            int FirstShootrs, int ShootInterv, double ShootV, double ShootDx,
+            CALL_BACK Mid=null):base(world, parent)
         {
+            MidTerm = Mid;
             this.ShootInter = ShootInterv;
             this.ShootV = ShootV;
             this.ShootDx = ShootDx;
@@ -75,6 +80,7 @@ namespace tanmak.TanmakuSequence
             World.AddObject(new TickerObject(World, Wait, delegate
             {
                 IsActivate = true;
+                MidTerm?.Invoke();
             }));
         }
 
@@ -104,9 +110,9 @@ namespace tanmak.TanmakuSequence
         int Len2 = 400;
         double R1 = 400;
         double R2 = 200;
-        double rV = 2.1;
+        double rV = 2.24;
         NormalServant[] Servants;
-
+        int Called = 0;
         public double RFunc(int Tick)
         {
             if (Tick <= Len1)
@@ -122,12 +128,15 @@ namespace tanmak.TanmakuSequence
             return ((rV * Tick) % 360) * Math.PI / 180.0;
         }
 
+        CALL_BACK MidTerm;
         
         public AreaLimitingServantTanmakuSequence(World world, GameObject parent,GameObject Player,
-            EmptyBulletSkin Ska = null, int Numbers = 5,
-            int Shoot_Inter=1, double Shoot_V = 1.2, double Shoot_Angle_d = 0.9):
+            EmptyBulletSkin Ska = null, int Numbers = 4,
+            int Shoot_Inter=1, double Shoot_V = 1.2, double Shoot_Angle_d = 0.9,
+            CALL_BACK Mid = null) :
             base(world,parent)
         {
+            MidTerm = Mid;
             Servants = new NormalServant[Numbers];
             int wi;
 
@@ -153,7 +162,12 @@ namespace tanmak.TanmakuSequence
                 Servants[wi] = new NormalServant(World, Player, Parent,
                     PFunc, Sprite);
                 var a = new SingleAreaLimitingServantTanmakuSequence(World, Servants[wi], Ska,
-                    Len1, Shoot_Inter, Shoot_V, Shoot_Angle_d);
+                    Len1, Shoot_Inter, Shoot_V, Shoot_Angle_d, delegate
+                    {
+                        if (0!=Called)
+                            MidTerm?.Invoke();
+                        ++Called;
+                    });
                 Servants[wi].SetSequence(a);
             }
             EndTick = 999999;
@@ -162,7 +176,7 @@ namespace tanmak.TanmakuSequence
         public override void Activate()
         {
 
-            ((ObjEnemyZero)Parent).MoveTo(World.Width / 2, World.Height / 2, 400);
+            ((Eevees)Parent).MoveTo(World.Width / 2, World.Height / 2, 400);
             for (int wi = 0; wi < Servants.Length; ++wi)
                 Servants[wi].Activate();
         }

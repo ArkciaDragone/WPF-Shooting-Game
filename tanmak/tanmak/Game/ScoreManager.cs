@@ -14,6 +14,7 @@ namespace tanmak.Game
         public int Combo { get; set; } = 0;
         public int MaxCombo { get; set; } = 0;
         public int Score { get; set; } = 0;
+        public bool Win { get; set; } = false;
 
         public bool IsDied { get; set; } = false;
 

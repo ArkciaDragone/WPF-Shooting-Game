@@ -12,10 +12,13 @@ namespace tanmak.TanmakuSequence
 {
     public class DelayTanmakuSequence:EmptyTanmakuSequence
     {
+
         public DelayTanmakuSequence(World world, GameObject parent,int ticks):base(world,parent)
         {
+            dispatcher = new DispatcherTimer();
             dispatcher.Interval = TimeSpan.FromMilliseconds(ticks * 50);
             EndTick = ticks;
+            dispatcher.Start();
         }
 
         public override void Activate()

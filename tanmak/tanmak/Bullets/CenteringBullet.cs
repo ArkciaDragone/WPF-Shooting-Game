@@ -15,6 +15,7 @@ namespace tanmak.Game
         RFUNC RFunc;
         double sAng,cAng;
         int Tick = 0;
+        bool Ended;
         public CenteringBullet(EmptyBulletSkin skin,World world,
             double Ang, RFUNC rFunc) : base(world)
         {
@@ -30,19 +31,27 @@ namespace tanmak.Game
             double r = rFunc(0);
             X = r * sAng;
             Y = r * cAng;
-            
+            Ended = false;
             //Sprite = new Engine.CircleSprite(new SolidColorBrush(Color.FromRgb(0, 255, 255)), radius);
         }
-
+        
         public override void OnUpdate()
         {
+            if(Ended)
+            {
+                ++Tick;
+                if (Tick == 0)
+                    Dead = true;
+                return;
+            }
             double r = RFunc(Tick);
-
-
-            X = r * sAng;
-            Y = r * cAng;
-            if(Math.Abs(r) <  0.01)
-                Dead = true;
+            X = r * sAng + World.Width/2 - Width/2;
+            Y = r * cAng + World.Height/2 - Height/2;
+            if (Math.Abs(r) < 0.001)
+            {
+                Ended = true;
+                Tick = -8;
+            }
             ++Tick;
         }
     }
