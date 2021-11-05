@@ -171,17 +171,11 @@ namespace tanmak.Engine
 
         internal void GarbageCollection(ref List<GameObject> Objects_)
         {
-            int index = 0;
-            while (true)
-                if (index >= Objects_.Count)
-                    break;
-                else
-                {
-                    if (Objects_[index].Dead)
-                        Objects_.RemoveAt(index);
-                    else
-                        index++;
-                }
+            List<GameObject> Buf = new List<GameObject>();
+            foreach (GameObject a in Objects_)
+                if (!a.Dead)
+                    Buf.Add(a);
+            Objects_ = Buf;
         }
     }
 }
