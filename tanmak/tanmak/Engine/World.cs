@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Threading;
 
 namespace tanmak.Engine
 {
@@ -28,10 +29,11 @@ namespace tanmak.Engine
         public World(GamePlane Plane)
         {
             this.Plane = Plane;
-
             Width = Plane.ActualWidth;
-
             Height = Plane.ActualHeight;
+            var timer = new DispatcherTimer() { Interval = TimeSpan.FromSeconds(1) };
+            timer.Tick += CollectAll;
+            timer.Start();
         }
         public virtual void OnRender(DrawingContext dc)
         {
@@ -41,7 +43,7 @@ namespace tanmak.Engine
             foreach (GameObject obj in Objects)
             {
                 if (!obj.Dead)
-                    if(obj.X >= 0-30 && obj.X < Width+30 && obj.Y >= 0-30 && obj.Y <= Height+30)
+                    if (obj.X >= 0 - 30 && obj.X < Width + 30 && obj.Y >= 0 - 30 && obj.Y <= Height + 30)
                     {
                         obj.OnRender(dc);
                     }
@@ -64,24 +66,24 @@ namespace tanmak.Engine
                 if (!obj.Dead)
                     obj.OnUpdate();
             foreach (GameObject obj in Objects)
-            {
                 if (!obj.Dead)
-                {
                     obj.OnUpdate();
-                }
-            }
             foreach (GameObject obj in TopMostObjects)
-                if(!obj.Dead)
+                if (!obj.Dead)
                     obj.OnUpdate();
             foreach (GameObject obj in TopTopMostObjects)
                 if (!obj.Dead)
                     obj.OnUpdate();
 
-            GarbageCollection_(ref UnderObjects);
-            GarbageCollection();
-            GarbageCollection_(ref TopMostObjects);
-            GarbageCollection_(ref TopTopMostObjects);
             ProcessPaddingObjects(true);
+        }
+
+        private void CollectAll(object _, EventArgs __)
+        {
+            GarbageCollection(ref UnderObjects);
+            GarbageCollection(ref Objects);
+            GarbageCollection(ref TopMostObjects);
+            GarbageCollection(ref TopTopMostObjects);
         }
 
         internal void ProcessPaddingObjects(bool doUpdate = false)
@@ -100,7 +102,7 @@ namespace tanmak.Engine
                     obj.OnUpdate();
             }
 
-            if(UnderPadding.Count>0)
+            if (UnderPadding.Count > 0)
             {
                 UnderObjects.AddRange(UnderPadding);
                 UnderPadding.Clear();
@@ -110,7 +112,7 @@ namespace tanmak.Engine
                 Objects.AddRange(PaddingObjects);
                 PaddingObjects.Clear();
             }
-            if(TopMostPadding.Count>0)
+            if (TopMostPadding.Count > 0)
             {
                 TopMostObjects.AddRange(TopMostPadding);
                 TopMostPadding.Clear();
@@ -166,21 +168,19 @@ namespace tanmak.Engine
             dc.DrawText(ft, new Point(Math.Round(x + xOffset), Math.Round(y + yOffset)));
         }
 
-        internal void GarbageCollection()
-        {
-            GarbageCollection_(ref Objects);
-        }
-        internal void GarbageCollection_(ref List<GameObject> Objects_)
+        internal void GarbageCollection(ref List<GameObject> Objects_)
         {
             int index = 0;
             while (true)
                 if (index >= Objects_.Count)
                     break;
                 else
+                {
                     if (Objects_[index].Dead)
-                    Objects_.RemoveAt(index);
-                else
-                    index++;
+                        Objects_.RemoveAt(index);
+                    else
+                        index++;
+                }
         }
     }
 }

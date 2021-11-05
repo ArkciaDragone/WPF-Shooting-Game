@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Collections.Generic;
 
 namespace tanmak.Engine
 {
@@ -13,6 +14,7 @@ namespace tanmak.Engine
         uint animWait, wait;
         Point tune;
         double? angSpeed = null;
+        private static Dictionary<string, ImageSource> imageCache = new Dictionary<string, ImageSource>();
         ImageSprite()
         {
 
@@ -22,7 +24,17 @@ namespace tanmak.Engine
         {
             sources = new ImageSource[filenames.Length];
             for (int i = 0; i < filenames.Length; i++)
-                sources[i] = new BitmapImage(new Uri("pack://application:,,,/" + filenames[i]));
+            {
+                try
+                {
+                    sources[i] = imageCache[filenames[i]];
+                }
+                catch (KeyNotFoundException)
+                {
+                    Console.WriteLine("cache miss with {0}", filenames[i]);
+                    imageCache[filenames[i]] = sources[i] = new BitmapImage(new Uri("pack://application:,,,/" + filenames[i]));;
+                }
+            }
 
             if (width < 0 || height < 0 || (width == 0 && height == 0))
             {
