@@ -22,7 +22,6 @@ namespace tanmak.TanmakuSequence
             Parent = parent;
             World = world;
         }
-
         public void SetEndCall(CALL_BACK c) => DeathCall = c;
 
         public delegate void CALL_BACK();

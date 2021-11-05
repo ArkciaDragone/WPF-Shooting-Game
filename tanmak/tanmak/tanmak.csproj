@@ -135,9 +135,12 @@
     <Compile Include="Halo\EmptyHalo.cs" />
     <Compile Include="ProcessingBar\SimpleHealthBar.cs" />
     <Compile Include="ProcessingBar\SimpleTimingBar.cs" />
+    <Compile Include="Servant\NormalServant.cs" />
     <Compile Include="TanmakuSequence\ExposionAroundTS.cs" />
     <Compile Include="TanmakuSequence\FreezingWindTS.cs" />
     <Compile Include="TanmakuSequence\EvilWaveTS.cs" />
+    <Compile Include="TanmakuSequence\ServantTestTS.cs" />
+    <Compile Include="TanmakuSequence\LinkingTS.cs" />
     <Compile Include="TanmakuSequence\HotWaterTS.cs" />
     <Compile Include="TanmakuSequence\HighSpeedStarTS.cs" />
     <Compile Include="TanmakuSequence\SunriseTenshiTS.cs" />

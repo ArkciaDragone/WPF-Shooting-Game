@@ -4,6 +4,14 @@ using System.Windows.Media;
 using System.Windows.Threading;
 using tanmak.Engine;
 using tanmak.BulletSkin;
+using tanmak.TanmakuSequence;
+using tanmak.CardActivateAnimate;
+using tanmak.ProcessingBar;
+using tanmak.CardNameShow;
+using tanmak.Card;
+using tanmak.Halo;
+using System.Windows;
+using tanmak.Servant;
 
 namespace tanmak.Game
 {
@@ -28,33 +36,13 @@ namespace tanmak.Game
 
             this.player = player;
 
-            double av = 0.7, rv = 1.45;
-            var I = new SimpleRedBigTamaSkin();
-            var F = new SimpleColorfulBallSkin(11);
-            var J = new SimpleYellowBigTamaSkin();
-            var K = new SimpleIceBallSkin();
-            bullets.Add(new ExposionBulleter(I, F, 100, 100, 200, 50,
-                100, 2.5, 1.5, this));
-            Inter.Add(10);
-            Delay.Add(1);
-            bullets.Add(new SplitBulleter(J, K, -100, 100, 200, 50, 10, 3, -10000, this));
-            Inter.Add(10);
-            Delay.Add(6);
-            dispancer = new DispatcherTimer();
-            int Tick = 0;
-            dispancer.Interval = TimeSpan.FromMilliseconds(200);
-            dispancer.Tick += delegate
-            {
-                ++Tick;
-               for(int bulletIndex=0; bulletIndex<bullets.Count;++bulletIndex)
-                    if(Delay[bulletIndex] < Tick)
-                    if((Tick - Delay[bulletIndex]) % Inter[bulletIndex] == 0)
-                        bullets[bulletIndex].Shoot();
+            var C = new TimingCardObject(World, new SimpleCardName(World,"TESTING"),
+                new ServantTestTenmakuSequence(World, this, player, 100),
+                new UmbreonCardActivateAnimates(world), this, new BlueHalo(World, this));
+            C.SetEndCall(MoveAway);
+            C.Activate();
 
-                //dispancer.Interval = TimeSpan.FromMilliseconds(35000);
-            };
-
-            dispancer.Start();
+            
         }
 
         public override void OnUpdate()
@@ -71,10 +59,10 @@ namespace tanmak.Game
                 }
             }
         }
-
+        DispatcherTimer timer;
         private void MoveToRandom()
         {
-            DispatcherTimer timer = new DispatcherTimer();
+            timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(1000);
             var Interval = 500;
             timer.Tick += delegate
@@ -90,6 +78,11 @@ namespace tanmak.Game
 
             timer.Start();
         }
-
+        public void MoveAway()
+        {
+            if (timer.IsEnabled)
+                timer.Stop();
+            MoveTo(rand.NextDouble(20, World.Width - 20), -160, 500);
+        }
     }
 }

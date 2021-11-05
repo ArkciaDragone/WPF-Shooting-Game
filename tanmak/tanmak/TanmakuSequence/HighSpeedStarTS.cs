@@ -36,7 +36,6 @@ namespace tanmak.TanmakuSequence
 
             dispatcher = new DispatcherTimer();
             dispatcher.Interval = TimeSpan.FromMilliseconds(50);
-            Tick = 0;
             dispatcher.Tick += delegate
             {
 
@@ -63,6 +62,7 @@ namespace tanmak.TanmakuSequence
 
         public override void Activate()
         {
+            Tick = 0;
             dispatcher.Start();
         }
 
