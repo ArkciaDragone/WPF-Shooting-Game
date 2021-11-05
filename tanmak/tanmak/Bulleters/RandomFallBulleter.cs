@@ -33,7 +33,7 @@ namespace tanmak.Game
                 double Speed = Spd + Random.NextDouble(-SpdRg, SpdRg);
                 double vx = Speed * Math.Cos(Rad * Math.PI / 180);
                 double vy = Speed * Math.Sin(Rad * Math.PI / 180);
-                World.AddObject(new LinearBullet(Skin, World, sx, sy, vx, vy, -1));
+                World.AddObject(new DirectedLinearBullet(Skin, World, sx, sy, vx, vy));
             }
             return 0;
         }

@@ -21,7 +21,7 @@ namespace tanmak.TanmakuSequence
             int WallInter = 20, int StormInter = 7, double WallSpeed = 1.2,
             double WallRange = 0.8,double SplitSize = 0.12,
             double speed_mean = 3, double speed_adj = 1,
-            double Rad_range = 5, int GCD = 45):
+            double Rad_range = 10, int GCD = 45):
             base(world,parent)
         {
             this.GCD = GCD;

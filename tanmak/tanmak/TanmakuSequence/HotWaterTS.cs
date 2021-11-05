@@ -18,7 +18,7 @@ namespace tanmak.TanmakuSequence
         int Tick;
         public HotWaterTanmakuSequence(World world, GameObject parent,
             EmptyBulletSkin Ska = null,EmptyBulletSkin Skaa=null,EmptyBulletSkin Skb =null, int Times = 100,
-            int LWaves=2, int WInter=5, int WOnter = 8, int WWays=35,
+            int LWaves=2, int WInter=4, int WOnter = 8, int WWays=35,
             double WASpeed = 0.12, double WRSpeed = 1.3,
             int DInter = 20, int lWaves=5, int lWays=10,double lSpeed = 0.9,int lInter = 9,
             int GCD = 45):

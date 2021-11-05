@@ -22,7 +22,8 @@ namespace tanmak.Game
 
             Damage = ScoreManager.NormalBulletDamage;
             Sprite = skin.GetSprit();
-            ((ImageSprite)Sprite).SetAngle(Math.Atan2(y_vec, x_vec) );
+            if (!((ImageSprite)Sprite).IsRotate()) 
+                ((ImageSprite)Sprite).SetAngle(Math.Atan2(y_vec, x_vec) * 180 / Math.PI + 90);
             //Sprite = new Engine.CircleSprite(new SolidColorBrush(Color.FromRgb(0, 255, 255)), radius);
         }
 
@@ -31,7 +32,6 @@ namespace tanmak.Game
             X += x_vec;
             Y += y_vec;
 
-            ((ImageSprite)Sprite).SetAngle(Math.Atan2(y_vec, x_vec));
             CheckOutOfBounds();
         }
     }

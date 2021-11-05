@@ -15,7 +15,7 @@ namespace tanmak.BulletSkin
             Ret = new Engine.ImageSprite(Fn, 29, 29);
             Width = ((Engine.ImageSprite)Ret).GetWidth();
             Height = ((Engine.ImageSprite)Ret).GetHeight();
-            ((Engine.ImageSprite)Ret).SetAngularSpeed(0.5);
+            ((Engine.ImageSprite)Ret).SetAngularSpeed(10);
         }
        
     }

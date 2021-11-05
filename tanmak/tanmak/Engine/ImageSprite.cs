@@ -13,6 +13,10 @@ namespace tanmak.Engine
         uint animWait, wait;
         Point tune;
         double? angSpeed = null;
+        ImageSprite()
+        {
+
+        }
 
         public ImageSprite(string[] filenames, double width = 0, double height = 0, Point fineTune = new Point(), uint animationWait = 10)
         {
@@ -46,18 +50,25 @@ namespace tanmak.Engine
             animWait = animationWait;
             tune = fineTune;
         }
-
+        public bool IsRotate()
+        {
+            return (Math.Abs(angSpeed??0) > 0.001);
+        }
         public override void Render(GameObject Parent, DrawingContext dc)
         {
             Point lt = new Point(Parent.X + tune.X, Parent.Y + tune.Y);
             Point center = new Point(lt.X + _width / 2, lt.Y + _height / 2);
 
             currentAngle += angSpeed ?? 0;
-            dc.PushTransform(new RotateTransform(currentAngle, center.X, center.Y));
-            dc.PushOpacity(_alpha);
+            if(Math.Abs(currentAngle) > 0.01)
+                dc.PushTransform(new RotateTransform(currentAngle, center.X, center.Y));
+            if(Math.Abs(_alpha)< 0.99)
+                dc.PushOpacity(_alpha);
             dc.DrawImage(sources[frame % sources.Length], new Rect(lt, new Size(_width, _height)));
-            dc.Pop();
-            dc.Pop();
+            if (Math.Abs(_alpha) < 0.99)
+                dc.Pop();
+            if (Math.Abs(currentAngle) > 0.01)
+                dc.Pop();
 
             if (wait++ >= animWait)
             {
@@ -75,5 +86,21 @@ namespace tanmak.Engine
         }
         public int GetHeight() => (int)_height;
         public int GetWidth() => (int)_width;
+
+        public ImageSprite Clone()
+        {
+            ImageSprite ret = new ImageSprite();
+            ret.sources = sources;
+            ret.tune = tune;
+            ret.wait = wait;
+            ret._alpha = _alpha;
+            ret._height = _height;
+            ret._width = _width;
+            ret.angSpeed = angSpeed;
+            ret.animWait = animWait;
+            ret.currentAngle = currentAngle;
+            ret.frame = frame;
+            return ret;
+        }
     }
 }

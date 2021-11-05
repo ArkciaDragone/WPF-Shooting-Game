@@ -23,7 +23,10 @@ namespace tanmak.BulletSkin
 
         public virtual Sprite GetSprit()
         {
-            return Ret;
+            if (Ret is ImageSprite)
+                return ((Engine.ImageSprite)Ret).Clone();
+            else
+                return Ret;
         }
     }
 }
