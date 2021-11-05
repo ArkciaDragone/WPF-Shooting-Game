@@ -25,6 +25,8 @@ namespace tanmak.Game
 
             Damage = ScoreManager.NormalBulletDamage;
             Sprite = skin.GetSprit();
+            Width = skin.Width;
+            Height = skin.Height;
             //Sprite = new Engine.CircleSprite(new SolidColorBrush(Color.FromRgb(0, 255, 255)), radius);
         }
 

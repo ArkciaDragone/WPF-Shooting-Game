@@ -7,6 +7,8 @@ using tanmak.Engine;
 using tanmak.BulletSkin;
 using tanmak.Game;
 using System.Windows.Threading;
+using System.Windows;
+
 
 namespace tanmak.TanmakuSequence
 {
@@ -17,6 +19,8 @@ namespace tanmak.TanmakuSequence
         public CALL_BACK DeathCall;
         public int EndTick;
         public DispatcherTimer dispatcher;
+
+        static Engine.Random rand = new Engine.Random();
         public EmptyTanmakuSequence(World world, GameObject parent)
         {
             Parent = parent;
@@ -33,6 +37,9 @@ namespace tanmak.TanmakuSequence
         {
             dispatcher.Stop();
         }
-
+        public virtual Point GetMovingTo()
+        {
+            return new Point(World.Width / 2 - Parent.Width / 2, World.Height / 5 - Parent.Height / 2);
+        }
     }
 }

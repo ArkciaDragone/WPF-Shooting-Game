@@ -12,6 +12,7 @@ using tanmak.Engine;
 using System.Threading;
 using System.Windows.Threading;
 using tanmak.Halo;
+using System.Windows;
 
 namespace tanmak.Card
 {
@@ -29,9 +30,13 @@ namespace tanmak.Card
                 this.CardAnimate.Activate();
                 this.CardName.Activate();
                 this.Halo.Activate();
+                Point p = this.Tanmaku.GetMovingTo();
+                this.Boss.timer.Stop();
+                this.Boss.MoveTo(p.X, p.Y, MovingTime);
             };
             this.CardAnimate.SetEndCall(delegate { 
-                Tanmaku.Activate(); 
+                Tanmaku.Activate();
+                this.Boss.timer.Start();
                 this.Bar.Activate(); });
             this.Bar.SetEndCall(delegate
             {

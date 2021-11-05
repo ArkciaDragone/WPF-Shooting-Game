@@ -19,8 +19,10 @@ namespace tanmak.ProcessingBar
         Brush inBrush;
         Pen outPen;
         DispatcherTimer dispatcher;
-        public SimpleTimingBar(World world, int Ticks) : base(world)
+        ObjPlayer Player;
+        public SimpleTimingBar(World world, int Ticks, ObjPlayer Player) : base(world)
         {
+            this.Player = Player;
             EndTicks = Ticks;
             inBrush = new SolidColorBrush(Color.FromArgb(180, 0, 0, 255));
             outPen = new Pen(Brushes.Black, 2);
@@ -38,7 +40,8 @@ namespace tanmak.ProcessingBar
             World.AddTopMost(this);
             dispatcher.Tick += delegate
             {
-
+                if (Player.Dead)
+                    return;
                 ++Ticks;
                 if(Ticks >= EndTicks)
                 {

@@ -36,9 +36,9 @@ namespace tanmak.Game
 
             this.player = player;
 
-            var C = new TimingCardObject(World, new SimpleCardName(World,"TESTING"),
-                new ServantTestTenmakuSequence(World, this, player, 100),
-                new UmbreonCardActivateAnimates(world), this, new BlueHalo(World, this));
+            var C = new NormalCardObject(World, new SimpleCardName(World,"TESTING"),
+                new AreaLimitingServantTanmakuSequence(World,this,player),
+                new UmbreonCardActivateAnimates(world), this, new BlueHalo(World, this),20);
             C.SetEndCall(MoveAway);
             C.Activate();
 
@@ -59,12 +59,10 @@ namespace tanmak.Game
                 }
             }
         }
-        DispatcherTimer timer;
         private void MoveToRandom()
         {
             timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(1000);
-            var Interval = 500;
+            timer.Interval = TimeSpan.FromMilliseconds(4000);
             timer.Tick += delegate
             {
                 double x = rand.NextDouble(40, World.Width - 50 - this.Width);

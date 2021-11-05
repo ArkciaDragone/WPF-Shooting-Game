@@ -43,7 +43,8 @@ namespace tanmak.Engine
             foreach (GameObject obj in Objects)
             {
                 if (!obj.Dead)
-                    if (obj.X >= 0 - 30 && obj.X < Width + 30 && obj.Y >= 0 - 30 && obj.Y <= Height + 30)
+                    if (obj.X >= -obj.Width*2 && obj.X <= Width + obj.Width*2 && 
+                        obj.Y >= 0 - obj.Height*2 && obj.Y <= Height + obj.Height*2)
                     {
                         obj.OnRender(dc);
                     }

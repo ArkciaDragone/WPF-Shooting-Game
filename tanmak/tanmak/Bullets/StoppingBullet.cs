@@ -30,6 +30,8 @@ namespace tanmak.Game
             walktick = walkticks;
             arrivetick = arriveticks;
 
+            Width = skin.Width;
+            Height = skin.Height;
             Damage = ScoreManager.NormalBulletDamage;
             Sprite = skin.GetSprit();
             //Sprite = new Engine.CircleSprite(new SolidColorBrush(Color.FromRgb(0, 255, 255)), radius);

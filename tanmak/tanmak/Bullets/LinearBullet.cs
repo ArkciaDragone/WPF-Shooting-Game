@@ -20,6 +20,8 @@ namespace tanmak.Game
             this.y_vec = y_vec;
             this.radius = radius;
 
+            Width = skin.Width;
+            Height = skin.Height;
             Damage = ScoreManager.NormalBulletDamage;
             Sprite = skin.GetSprit();
             //Sprite = new Engine.CircleSprite(new SolidColorBrush(Color.FromRgb(0, 255, 255)), radius);
@@ -29,8 +31,24 @@ namespace tanmak.Game
         {
             X += x_vec;
             Y += y_vec;
+            if (X >= -Width * 2 && X <= World.Width + Width * 2 && Y >= -Height * 2 && Y <= World.Height + Height * 2)
+                return;
 
-            CheckOutOfBounds();
+            double GetX(double tx, double ty)
+            {
+                tx -= X;
+                ty -= Y;
+                return tx * x_vec + ty * y_vec;
+            }
+            if (GetX(0, 0) > 0)
+                return;
+            if (GetX(0, World.Height) > 0)
+                return;
+            if (GetX(World.Width, 0) > 0)
+                return;
+            if (GetX(World.Width, World.Height) > 0)
+                return;
+            Dead = true;
         }
     }
 }

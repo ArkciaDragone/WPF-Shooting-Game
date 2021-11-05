@@ -100,12 +100,10 @@ namespace tanmak.Game
                 }
             }
         }
-        DispatcherTimer timer;
-
         private void MoveToRandom()
         {
             timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(4000);
+            timer.Interval = TimeSpan.FromMilliseconds(2000);
             var Interval = 500;
             timer.Tick += delegate
             {

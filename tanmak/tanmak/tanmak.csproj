@@ -65,6 +65,7 @@
     <Compile Include="Bulleters\NullBulleter.cs" />
     <Compile Include="Bulleters\RotateBulleter.cs" />
     <Compile Include="Bulleters\CircleBulleter.cs" />
+    <Compile Include="BulletSkin\PurpleBigTamaSkin.cs" />
     <Compile Include="BulletSkin\LightBigTamaSkin.cs" />
     <Compile Include="BulletSkin\BlackSmallTamaSkin.cs" />
     <Compile Include="BulletSkin\BlackMediumTamaSkin.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="BulletSkin\SimpleBlueBigTamaSkin.cs" />
     <Compile Include="BulletSkin\SimpleDarkBlueBigTamaSkin.cs" />
     <Compile Include="BulletSkin\SimpleLightBigTamaSkin.cs" />
+    <Compile Include="BulletSkin\SimplePurpleBigTamaSkin.cs" />
     <Compile Include="BulletSkin\StarSkin.cs" />
     <Compile Include="BulletSkin\SimpleColorfulBallSkin.cs" />
     <Compile Include="BulletSkin\SimpleIceBallSkin.cs" />
@@ -86,6 +88,7 @@
     <Compile Include="BulletSkin\IceBallSkin.cs" />
     <Compile Include="Bullets\CircleBullet.cs" />
     <Compile Include="Bullets\DirectedLinearBullet.cs" />
+    <Compile Include="Bullets\CenteringBullet.cs" />
     <Compile Include="Bullets\LinearBullet.cs" />
     <Compile Include="Bullets\StoppingBullet.cs" />
     <Compile Include="CardActivateAnimate\UmbreonCardActivateAnimates.cs" />
@@ -136,9 +139,11 @@
     <Compile Include="ProcessingBar\SimpleHealthBar.cs" />
     <Compile Include="ProcessingBar\SimpleTimingBar.cs" />
     <Compile Include="Servant\NormalServant.cs" />
+    <Compile Include="TanmakuSequence\DelayTanmakuSequence.cs" />
     <Compile Include="TanmakuSequence\ExposionAroundTS.cs" />
     <Compile Include="TanmakuSequence\FreezingWindTS.cs" />
     <Compile Include="TanmakuSequence\EvilWaveTS.cs" />
+    <Compile Include="TanmakuSequence\AreaLimitingServantTS.cs" />
     <Compile Include="TanmakuSequence\ServantTestTS.cs" />
     <Compile Include="TanmakuSequence\LinkingTS.cs" />
     <Compile Include="TanmakuSequence\HotWaterTS.cs" />
@@ -271,6 +276,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Sources\Illust\91677258_p0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sources\BigTama_Purple.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

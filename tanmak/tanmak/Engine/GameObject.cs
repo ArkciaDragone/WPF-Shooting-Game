@@ -2,11 +2,20 @@
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Threading;
 
 namespace tanmak.Engine
 {
     public abstract class GameObject : DependencyObject
     {
+        public DispatcherTimer timer;
+        public virtual void MoveAway()
+        {
+            if (timer.IsEnabled)
+                timer.Stop();
+            MoveTo(World.Width/2 - Width /2, -250, 1000);
+        }
+
         public int HitCount;
         public static DependencyProperty XProperty = DependencyProperty.Register("X", typeof(double), typeof(GameObject));
         public double X

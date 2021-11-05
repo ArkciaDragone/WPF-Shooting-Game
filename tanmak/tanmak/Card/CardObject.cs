@@ -15,6 +15,8 @@ namespace tanmak.Card
 {
     public class CardObject
     {
+
+        public int MovingTime = 1000;
         public delegate void CALL_BACK();
         public CALL_BACK DeathCall;
         public EmptyTanmakuSequence Tanmaku;

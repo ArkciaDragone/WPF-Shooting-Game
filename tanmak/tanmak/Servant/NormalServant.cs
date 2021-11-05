@@ -22,6 +22,7 @@ namespace tanmak.Servant
         POS_FUNC PosFunc;
         GameObject Player, Boss;
         EmptyTanmakuSequence Seq;
+
         public NormalServant(World world, GameObject Player, GameObject Boss,
             POS_FUNC Pf, Sprite Sprite=null):base(world)
         {
