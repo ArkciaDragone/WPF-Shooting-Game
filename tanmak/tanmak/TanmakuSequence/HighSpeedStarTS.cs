@@ -18,8 +18,8 @@ namespace tanmak.TanmakuSequence
         int Tick;
         public HighSpeedStarTanmakuSequence(World world, GameObject parent,
             EmptyBulletSkin Ska = null, int Times = 100,
-            int Ways = 5, int Inter = 4,
-            double speed_mean = 4.5, double speed_adj = 1.5,
+            int Ways = 4, int Inter = 5,
+            double speed_mean = 5.5, double speed_adj = 1,
             double Rad_range = 30, int GCD = 20):
             base(world,parent)
         {

@@ -18,7 +18,7 @@ namespace tanmak.TanmakuSequence
         int Tick;
         public FreezingWindTanmakuSequence(World world, GameObject parent,
             EmptyBulletSkin Ska = null,EmptyBulletSkin Skb=null, int Times = 1000,
-            int WallInter = 18, int StormInter = 7, double WallSpeed = 1.2,
+            int WallInter = 22, int StormInter = 7, double WallSpeed = 1.2,
             double WallRange = 0.8,double SplitSize = 0.08,
             double speed_mean = 3, double speed_adj = 1,
             double Rad_range = 10, int GCD = 45):

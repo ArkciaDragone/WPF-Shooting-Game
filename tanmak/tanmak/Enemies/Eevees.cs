@@ -51,7 +51,7 @@ namespace tanmak.Game
                 this, new WhiteHalo(World, this), 180);
             //c.Activate();
 
-            var d = new TimingCardObject(World, new SimpleCardName(World, "障符『光墙』"),
+            var d = new TimingCardObject(World, new SimpleCardName(World, "『光墙』"),
                 new LightWallTanmakuSequence(World, this, player), player,
                 new SylveonCardActivateAnimates(world), this, new RedHalo(World, this), 20);
 
