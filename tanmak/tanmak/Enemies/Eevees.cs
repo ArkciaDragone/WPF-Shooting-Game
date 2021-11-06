@@ -55,7 +55,7 @@ namespace tanmak.Game
                 new LightWallTanmakuSequence(World, this, player), player,
                 new SylveonCardActivateAnimates(world), this, new RedHalo(World, this), 20);
 
-            var e = new NormalCardObject(World, new SimpleCardName(World, "水符『热水』"),
+            var e = new NormalCardObject(World, new SimpleCardName(World, "水符『冲浪』"),
                 new HotWaterTanmakuSequence(World, this, Times: 999999), new VapreonCardActivateAnimates(World),
                 this, new LightBlueHalo(World, this), 140);
 
